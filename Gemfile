@@ -66,7 +66,7 @@ gem 'activeadmin'
 gem 'devise'
 
 #view装飾
-gem 'bootstrap'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 
 #画像投稿、サイズ変更
