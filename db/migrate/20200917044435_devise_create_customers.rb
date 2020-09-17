@@ -32,15 +32,17 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      t.boolean :is_deleted
-      t.string :first_name
-      t.string :first_name_kana
-      t.string :family_name
-      t.string :family_name_kana
-      t.string :postel_code
-      t.string :address
-      t.string :telephone_number
-      t.string :email
+      t.boolean :is_deleted, default: false, null: false
+      # ↑会員ステータスカラム TRUE =有効　FALSE =退会済
+
+      t.string :first_name,       null: false
+      t.string :first_name_kana,  null: false
+      t.string :family_name,      null: false
+      t.string :family_name_kana, null: false
+      t.string :postel_code,      null: false
+      t.string :address,          null: false
+      t.string :telephone_number, null: false, unique: true
+      t.string :email,            null: false
 
       t.timestamps null: false
     end
