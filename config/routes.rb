@@ -15,12 +15,13 @@ Rails.application.routes.draw do
   end
 
   #customer
+  scope module: :customers do
+
   resources :customers, only: [:show, :edit, :update]
   get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer' #退会画面への遷移
   patch '/customers/:id/withdrow' => 'customers#withdraw', as: 'withdrow_customer' #会員ステータスの切替
-
-  scope module: :customers do
   devise_for :customers
+
   root 'homes#top'
   get 'homes/about' => 'orders#thanks' #サンクスページ
 
