@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  #admin
-  namespace :admin do
+  #admins
+  namespace :admins do
     root 'homes#top'
     resources :customer, only: [:show, :index, :edit, :update]
     resources :items, except: [:destroy]
