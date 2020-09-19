@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :customers
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -15,19 +15,21 @@ Rails.application.routes.draw do
   end
 
   #customer
-  scope module: :customers do
-  root 'homes#top'
-  get '/thanks' => 'homes#thanks' #サンクスページ
-
   resources :customers, only: [:show, :edit, :update]
   get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer' #退会画面への遷移
   patch '/customers/:id/withdrow' => 'customers#withdraw', as: 'withdrow_customer' #会員ステータスの切替
+
+  scope module: :customers do
+  devise_for :customers
+  root 'homes#top'
+  get 'homes/about' => 'orders#thanks' #サンクスページ
 
   resources :addresses, except: [:new, :show]
 
   resources :orders, except: [:edit, :update, :destroy]
   post '/orders/confirm' => 'orders#confirm', as: 'orders_confirm' #注文情報確認画面
   get '/orders/item_view' => 'orders#item_view' #注文詳細画面を表示する
+  get '/thanks' => 'orders#thanks' #サンクスページ
 
   resources :cart_items, except: [:new, :show, :edit]
   delete '/cart_items' => 'cart_items#destroy_all' #カートアイテムを全て削除
