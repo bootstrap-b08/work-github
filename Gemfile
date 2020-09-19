@@ -61,8 +61,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-#管理者権限、devise機能
-gem 'activeadmin'
+#devise機能
 gem 'devise'
 
 #view装飾
