@@ -1,23 +1,25 @@
 Rails.application.routes.draw do
-  devise_for :customers
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
 
-  #admin
-  namespace :admin do
+  #admins
+  scope module: :admins do
+    devise_for :admins
+  end
+  namespace :admins do
     root 'homes#top'
     resources :customer, only: [:show, :index, :edit, :update]
     resources :items, except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :orders, only: [:index, :show]
+    get '/orders/count' => 'orders#count', as: "order_count" # 注文件数画面への遷移
     patch '/orders/:id/order_status' => 'orders#order_status_update', as: "order_status" # 注文ステータスupdate
     patch '/orders/:id/item_status' => 'orders#item_status_update', as: "item_status" # 製作ステータスupdate
   end
 
   #customer
   scope module: :customers do
+  devise_for :customers
   root 'homes#top'
-  get '/thanks' => 'homes#thanks' #サンクスページ
+  get '/homes/about' => 'homes#about' #サンクスページ
 
   resources :customers, only: [:show, :edit, :update]
   get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer' #退会画面への遷移
@@ -28,6 +30,7 @@ Rails.application.routes.draw do
   resources :orders, except: [:edit, :update, :destroy]
   post '/orders/confirm' => 'orders#confirm', as: 'orders_confirm' #注文情報確認画面
   get '/orders/item_view' => 'orders#item_view' #注文詳細画面を表示する
+  get '/thanks' => 'orders#thanks' #サンクスページ
 
   resources :cart_items, except: [:new, :show, :edit]
   delete '/cart_items' => 'cart_items#destroy_all' #カートアイテムを全て削除
