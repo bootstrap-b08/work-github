@@ -1,0 +1,37 @@
+<div class = "row">
+	<div class = "col-xs-6">
+		<section class = "items-new">
+			<h3 class = "items-new-headline">商品新規登録</h3>
+
+			<div class = "item-form">
+				<%= form_for(@item, new_admins_item) do |f| %>
+					<div class = "field">
+						<%= f.attachment_field :profile_image %>
+					</div>
+					<div class = "field">
+						<%= f.label :商品名 %>
+						<%= f.text_field :name %>
+					</div>
+					<div class = "field">
+						<%= f.label :商品説明 %>
+						<%= f.text_area :introduction %>
+					</div>
+					<div class = "field">
+						<%= f.label :ジャンル %>
+						<%= select_tag 'genre' %>
+					</div>
+					<div class = "field">
+						<%= f.label :税抜価格 %>
+						<%= f.number_field :price %>
+					</div>
+					<div class = "field">
+						<%= f.label :販売ステータス %>
+					</div>
+					<div class = "actions">
+						<%= f.submit '新規登録' %>
+					</div>
+				<% end %>
+			</div>
+		</section>
+	</div>
+</div>
