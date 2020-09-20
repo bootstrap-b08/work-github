@@ -1,2 +1,9 @@
 class Item < ApplicationRecord
+	validates :name, presence: true
+	validates :description, presence: true
+	validates :price, 		  presence: true
+	validates :sale_status, presence: true
+	has_many :cart_items, dependent: :destroy
+	belongs_to :genre
+	attachment :image
 end
