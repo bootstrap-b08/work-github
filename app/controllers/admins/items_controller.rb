@@ -21,6 +21,7 @@ class Admins::ItemsController < ApplicationController
 
 	def show
 		@item = Item.find(params[:id])
+		price_with_tax
 	end
 
 	def edit
@@ -39,6 +40,11 @@ class Admins::ItemsController < ApplicationController
 	private
 	def item_params
 		params.require(:item).permit(:genre_id, :name, :image, :introduction, :price, :is_active)
+	end
+
+	def price_with_tax
+		item = Item.find(params[:id])
+		@price_tax = item.price * 1.1
 	end
 
 end

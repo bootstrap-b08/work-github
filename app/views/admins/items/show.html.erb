@@ -1,0 +1,43 @@
+<div class = "row">
+
+	<div class = "col-md-11">
+
+		<section class = "items-show">
+
+			<h3 class = "items-show-headline">商品詳細</h3>
+
+			<%= attachment_image_tag @item, :image, format: 'jpeg', size: "250x200",
+				fallback: "/no_image.jpg" %>
+
+			商品名
+			<%= @item.name %>
+
+			商品説明
+			<%= @item.introduction %>
+
+			ジャンル
+			<%= @item.genre.name %>
+
+			税込価格（税抜価格）
+			<%= @item.price %>
+			（<%= @price_tax.floor %>）円
+
+			販売ステータス
+			<% if @item.is_active == true %>
+				販売中
+			<% elsif @item.is_active == false %>
+				売切れ
+			<% end %>
+
+			<%= link_to edit_admins_item_path(@item.id) do %>
+				<button class="btn btn-secondary btn-lg" style = "width:150px;background-color:blue;
+						color:white;" >
+					編集する
+				</button>
+			<% end %>
+
+		</section>
+
+	</div>
+
+</div>
