@@ -34,38 +34,42 @@
 
 						<tr>
 
-							<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid black;
+							<td style = "width:10%;padding:10px;font-size:18px;border-bottom:2px solid black;
 										line-height:50px;">
 
 								<%= item.id %>
 
 							</td>
 
-							<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid #eee;
+							<td style = "width:30%;padding:10px;font-size:18px;border-bottom:2px solid black;
 										line-height:50px;">
 
 								<%= item.name %>
 
 							</td>
 
-							<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid #eee;
+							<td style = "width:10%;padding:10px;font-size:18px;border-bottom:2px solid black;
 										line-height:50px;">
 
 								<%= item.price %>
 
 							</td>
 
-							<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid #eee;
+							<td style = "width:30%;padding:10px;font-size:18px;border-bottom:2px solid black;
 										line-height:50px;">
 
 								<%= item.genre.name %>
 
 							</td>
 
-							<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid #eee;
+							<td style = "width:10%;padding:10px;font-size:18px;border-bottom:2px solid black;
 										line-height:50px;">
 
-								<%= item.is_active %>
+								<% if item.is_active == true %>
+									販売中
+								<% elsif item.is_active == false %>
+									売切れ
+								<% end %>
 
 							</td>
 
@@ -76,6 +80,8 @@
 				<% end %>
 
 			</table>
+
+			<%= paginate @items %>
 
 		</section>
 
