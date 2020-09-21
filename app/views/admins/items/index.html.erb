@@ -1,33 +1,85 @@
 <div class = "row">
-	<div class = "col-xs-6">
-		<section class = "items-new">
-			<h3 class = "items-new-headline">商品一覧</h3>
 
-			<%= link_to do %>
-				<button class = "btn btn-default">+</button>
+	<div class = "col-md-11">
+
+		<section class = "items-index">
+
+			<h3 class = "items-index-headline">商品一覧</h3>
+
+			<%= link_to new_admins_item_path do %>
+
+				<button class = "btn btn-default" style = "float:right;">+</button>
+
 			<% end %>
 
-			<table>
+			<table style = "width:100%;">
+
 				<thead>
-					<tr>
-						<th>商品ID</th>
-						<th>商品名</th>
-						<th>税抜価格</th>
-						<th>ジャンル</th>
-						<th>ステータス</th>
+
+					<tr style = "border-top:2px solid black;border-bottom:2px solid black;">
+
+						<th style = "width:10%;padding:10px;font-size:18px;background-color:#eee;">商品ID</th>
+						<th style = "width:30%;padding:10px;font-size:18px;background-color:#eee;">商品名</th>
+						<th style = "width:10%;padding:10px;font-size:18px;background-color:#eee;">税抜価格</th>
+						<th style = "width:30%;padding:10px;font-size:18px;background-color:#eee;">ジャンル</th>
+						<th style = "width:10%;padding:10px;font-size:18px;background-color:#eee;">ステータス</th>
+
 					</tr>
+
 				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>洋梨のチーズタルト</td>
-						<td>1,200</td>
-						<td>ケーキ</td>
-						<td>販売中</td>
-					</tr>
-				</tbody>
+
+				<% @items.each do |item| %>
+
+					<tbody>
+
+						<tr>
+
+							<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid black;
+										line-height:50px;">
+
+								<%= item.id %>
+
+							</td>
+
+							<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid #eee;
+										line-height:50px;">
+
+								<%= item.name %>
+
+							</td>
+
+							<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid #eee;
+										line-height:50px;">
+
+								<%= item.price %>
+
+							</td>
+
+							<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid #eee;
+										line-height:50px;">
+
+								<%= item.genre.name %>
+
+							</td>
+
+							<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid #eee;
+										line-height:50px;">
+
+								<%= item.is_active %>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				<% end %>
+
 			</table>
 
 		</section>
+
 	</div>
+
 </div>
+
