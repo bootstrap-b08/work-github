@@ -58,4 +58,17 @@
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
+
+.genre-index-headline{
+	width:270px;
+	margin:40px 0 50px 80px;
+	padding:0 20px 0 30px;
+	background-color:#eee;
+}
+
+.genre-edit-headline{
+	width:200px;
+	margin:40px 0 50px 80px;
+	padding:0 20px 0 30px;
+	background-color:#eee;
 }
