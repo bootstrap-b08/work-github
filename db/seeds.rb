@@ -15,7 +15,7 @@ Customer.create!(
                   family_name_kana: "ヤマダ",
                   first_name_kana: "ハナコ",
                   telephone_number: "00000000000",
-                  email: "hoge1@mail",
+                  email: "hoge1@mail.jp",
                   password: "hogehoge",
 
                   postel_code: "0000000",
@@ -29,7 +29,7 @@ Customer.create!(
                   family_name_kana: "ヤマダ",
                   first_name_kana: "ハナコ",
                   telephone_number: "11111111111",
-                  email: "hoge2@mail",
+                  email: "hoge2@mail.jp",
                   password: "hogehoge",
 
                   postel_code: "1111111",

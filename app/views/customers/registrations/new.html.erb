@@ -4,7 +4,7 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal ", novalidate: "novalidate" }) do |f| %>
 
     <%= render "customers/shared/error_messages", resource: resource %>
-    <%= render partial: "customer_form_item", locals: {resource: resource, f: f} %>
+    <%= render "customers/customer_form_item",f:f %>
 
     <div class="form-group">
       <%= f.label "パスワード", class: "col-xs-2 control-label" %>
