@@ -1,0 +1,74 @@
+<div class = "row">
+
+	<div class = "col-xs-6">
+
+		<section class = "items-new">
+
+			<h3 class = "items-new-headline">商品新規登録</h3>
+
+			<div class = "item-form">
+
+				<%= form_for(@item, url: admins_items_path) do |f| %>
+
+					<% if @item.errors.any? %>
+
+						<section class = "alert alert-warning" style = "border:none; background-color:white;">
+
+				      		<h3 class = "error-headline" style = "margin-top:0; color:red;">
+				      			<%= pluralize(@item.errors.count, "error") %> prohibited this book from being saved:
+				      		</h3>
+
+							<ul class = "error-list" style = "margin-left:30px;">
+
+								<% @item.errors.full_messages.each do |message| %>
+									<li class = "errors" style = "color:red;"><%= message %></li>
+								<% end %>
+
+							</ul>
+
+						</section>
+
+					<% end %>
+
+					<div class = "field">
+						<%= f.attachment_field :image %>
+					</div>
+
+					<div class = "field">
+						<%= f.label :商品名 %>
+						<%= f.text_field :name %>
+					</div>
+
+					<div class = "field">
+						<%= f.label :商品説明 %>
+						<%= f.text_area :introduction %>
+					</div>
+
+					<div class = "field">
+						<%= f.label :ジャンル %>
+						<%= f.collection_select :genre_id, Genre.all, :id, :name %>
+					</div>
+
+					<div class = "field">
+						<%= f.label :税抜価格 %>
+						<%= f.number_field :price %>円
+					</div>
+
+					<div class = "field">
+						<%= f.label :販売ステータス %>
+						<%= f.select 'is_active', options_for_select([['販売中',1],['売切れ',0]]), include_blank: "選択して下さい" %>
+					</div>
+
+					<div class = "actions">
+						<%= f.submit '新規登録' %>
+					</div>
+
+				<% end %>
+
+			</div>
+
+		</section>
+
+	</div>
+
+</div>
