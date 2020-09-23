@@ -4,6 +4,7 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+
 #   Character.create(name: 'Luke', movie: movies.first)
 # CustomerModel(2)
 Customer.create!(
@@ -34,3 +35,4 @@ Admin.create!(
 				    email: "admin@example.jp",
 				    password:  "11111111",
 				)
+
