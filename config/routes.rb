@@ -17,26 +17,32 @@ Rails.application.routes.draw do
 
   #customer
   scope module: :customers do
-  devise_for :customers
-  root 'homes#top'
-  get '/homes/about' => 'homes#about' #サンクスページ
+    root 'homes#top'
+    get '/homes/about' => 'homes#about' #サンクスページ
 
-  resources :customers, only: [:show, :edit, :update]
-  get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer' #退会画面への遷移
-  patch '/customers/:id/withdrow' => 'customers#withdraw', as: 'withdrow_customer' #会員ステータスの切替
+    devise_for :customers, :skip => [:registrations]
+    #devise editとshowはcustomersコントローラで管理したいため
+      resource :customers,except: [:edit, :show, :update],
+          controller: 'registrations',
+          as: :customers_registration do
+            get 'cancel'
+          end
 
-  resources :addresses, except: [:new, :show]
+    resource :customers, only: [:show, :edit, :update ,:create]
+    get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer' #退会画面への遷移
+    patch '/customers/:id/withdrow' => 'customers#withdraw', as: 'withdrow_customer' #会員ステータスの切替
+    resources :addresses, except: [:new, :show]
 
-  resources :orders, except: [:edit, :update, :destroy]
-  post '/orders/confirm' => 'orders#confirm', as: 'orders_confirm' #注文情報確認画面
-  get '/orders/item_view' => 'orders#item_view' #注文詳細画面を表示する
-  get '/thanks' => 'orders#thanks' #サンクスページ
+    resources :orders, except: [:edit, :update, :destroy]
+    post '/orders/confirm' => 'orders#confirm', as: 'orders_confirm' #注文情報確認画面
+    get '/orders/item_view' => 'orders#item_view' #注文詳細画面を表示する
+    get '/thanks' => 'orders#thanks' #サンクスページ
 
-  resources :cart_items, except: [:new, :show, :edit]
-  delete '/cart_items' => 'cart_items#destroy_all' #カートアイテムを全て削除
+    resources :cart_items, except: [:new, :show, :edit]
+    delete '/cart_items' => 'cart_items#destroy_all' #カートアイテムを全て削除
 
-  resources :items, only: [:index, :show]
-  resources :genres, only: [:index]
+    resources :items, only: [:index, :show]
+    resources :genres, only: [:index]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
