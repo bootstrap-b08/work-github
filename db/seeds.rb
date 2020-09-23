@@ -32,7 +32,7 @@ Customer.create!(
                   address: "東京都 渋谷区",
                   )
 Admin.create!(
-				    email: "admin@example.jp",
-				    password:  "11111111",
-				)
+			    email: "admin@example.jp",
+			    password:  "11111111",
+			)
 
