@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <%= render "layouts/genre_search", genres: @genres %>
+
+
+    <div class="col-md-9">
+      <% if params[:genre_id] %>
+      <h3><%= @genre.name %>一覧</h3>
+
+
+      <% else %>
+      <h3>商品一覧</h3>
+      <% end %>
+      <strong>(全<%= @items.count %>件)</strong>
+
+
+        <% @items.each do |item| %>
+        <%= link_to item_path(item.id), :style=>"color: black; text-decoration: none;" do%>
+        <p>画像</p>
+        <p><%= item.name %></p>
+        <p>¥<%= item.price %></p>
+        <% end %>
+        <% end %>
+
+
+    </div>
+
+  </div>
+</div>
