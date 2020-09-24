@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-1">
+      <h2>パスワード変更</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="offset-4 col-4">
+      <%= form_for(current_customer ,url:customers_path, method: :get, html: { class: "form-horizontal", novalidate: "novalidate" }) do |f| %>
+<!-- 現在のパスワード入力 -->
+        <div class="form-group ">
+          <%= f.label :現在のパスワードを入力 %>
+          <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control offset-1 col-10" %>
+        </div>
+<!-- 新しいパスワード入力 -->
+        <div class="form-group">
+          <%= f.label :新しいパスワードを入力 %>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "", class: "form-control offset-1 col-10" %>
+        </div>
+
+<!-- 新しいパスワード確認 -->
+        <div class="form-group">
+          <%= f.label :もう一度入力してください %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control offset-1 col-10" %>
+        </div>
+
+        <div class="row inline-group">
+          <%= f.submit "パスワードを変更する", class: "btn btn-danger" %>
+          <%= link_to "もどる", :back, class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+

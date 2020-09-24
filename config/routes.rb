@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     devise_scope :customer do
       get 'customers/sign_up' => 'registrations#new', as: 'new_customers_registration'
       post 'customers/sign_up' => 'registrations#create', as: 'customers_registration'
+      get 'customers/registration_edit' => 'registrations#edit', as: 'edit_customer_registration'
     end
       # resource :customers,except: [:edit, :show, :update,],
       #     controller: 'registrations',
@@ -37,7 +38,7 @@ Rails.application.routes.draw do
 
     resource :customers, only: [:show, :edit, :update ,:create]
     get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer' #退会画面への遷移
-    patch '/customers/:id/withdrow' => 'customers#withdraw', as: 'withdrow_customer' #会員ステータスの切替
+    patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer' #会員ステータスの切替
     resources :addresses, except: [:new, :show]
 
     resources :orders, except: [:edit, :update, :destroy]

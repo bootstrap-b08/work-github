@@ -1,6 +1,6 @@
 <h2>Forgot your password?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+<%= form_for(resource, as: resource_name, url:customer_password_path, html: { method: :post }) do |f| %>
   <%= render "customers/shared/error_messages", resource: resource %>
 
   <div class="field">
@@ -13,4 +13,6 @@
   </div>
 <% end %>
 
-<%= render "customers/shared/links" %>
+<% unless customer_signed_in? %>
+  <%= render "customers/shared/links" %>
+<% end %>

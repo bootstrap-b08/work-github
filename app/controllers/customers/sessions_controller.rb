@@ -28,7 +28,7 @@ class Customers::SessionsController < Devise::SessionsController
     def after_sign_in_path_for(resource)
     if resource.is_deleted == true
        sign_out resource
-       root_path
+       new_customer_session_path
     else
        items_path
     end
