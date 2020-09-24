@@ -20,13 +20,13 @@ Rails.application.routes.draw do
     root 'homes#top'
     get '/homes/about' => 'homes#about' #サンクスページ
 
-    devise_for :customers, :skip => [:registrations]
-    #devise editとshowはcustomersコントローラで管理したいため
-      resource :customers,except: [:edit, :show, :update],
-          controller: 'registrations',
-          as: :customers_registration do
-            get 'cancel'
-          end
+    devise_for :customers#, :skip => [:registrations]
+    # #devise editとshowはcustomersコントローラで管理したいため
+    #   resource :customers,except: [:edit, :show, :update],
+    #       controller: 'registrations',
+    #       as: :customers_registration do
+    #         get 'cancel'
+    #       end
 
     resource :customers, only: [:show, :edit, :update ,:create]
     get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer' #退会画面への遷移
@@ -42,7 +42,9 @@ Rails.application.routes.draw do
     delete '/cart_items' => 'cart_items#destroy_all' #カートアイテムを全て削除
 
     resources :items, only: [:index, :show]
-    resources :genres, only: [:index]
+    resources :genres, only: [:index] do
+    resources :items, only: [:index]
+  end
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
