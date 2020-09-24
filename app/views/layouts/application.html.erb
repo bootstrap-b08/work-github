@@ -71,6 +71,13 @@
                   </li>
                 <% end %>
               </ul>
+              <div class = "search-box">
+                <%= form_tag(admins_searches_path, method: :get) do %>
+                  <%= text_field_tag(:word) %>
+                  <%= select_tag 'range', options_for_select([['会員検索','1'],['商品検索','2']]) %>
+                  <%= submit_tag '検索' %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

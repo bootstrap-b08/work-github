@@ -17,4 +17,12 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :addresses, dependent: :destroy
   has_many :orders, dependent: :destroy
+
+  def self.search(word)
+    if word == ""
+      @customers = Customer.all
+    else
+      @customers = Customer.where(["(family_name LIKE?) OR (first_name LIKE?)", "%#{word}%", "%#{word}%"])
+    end
+  end
 end
