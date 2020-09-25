@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  #admins
+  #adminss
   scope module: :admins do
     devise_for :admins
   end
   namespace :admins do
     root 'homes#top'
-    resources :customer, only: [:show, :index, :edit, :update]
+    resources :customers, only: [:show, :index, :edit, :update]
     resources :items, except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :orders, only: [:index, :show]
