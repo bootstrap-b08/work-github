@@ -65,7 +65,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 
 #view装飾
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 
 #画像投稿、サイズ変更
