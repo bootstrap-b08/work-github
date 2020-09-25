@@ -1,112 +1,68 @@
-<div class = "row">
+<div class = "container">
 
-	<div class = "col-xs-6">
+	<h3 class = "row"><span class = "bg-info">ジャンル一覧・追加</span></h3>
 
-		<section class = "genre-index">
+	<div class = "row" style = "margin-bottom:50px;">
+		<%= form_for(@genre, url: admins_genres_path) do |f| %>
 
-			<h3 class = "genre-index-headline">ジャンル一覧・追加</h3>
+			<% if @genre.errors.any? %>
+				<section>
+		      		<h3>
+		      			<%= pluralize(@genre.errors.count, "error") %> prohibited this book from being saved:
+		      		</h3>
+					<ul>
+						<% @genre.errors.full_messages.each do |message| %>
+							<li><%= message %></li>
+						<% end %>
+					</ul>
+				</section>
+			<% end %>
 
-			<div class = "genre-form" style = "padding-bottom:70px;">
+			<%= f.label :name, 'ジャンル' %>
+			<%= f.text_field :name, :style => 'width:180px; margin:0 5px 0 10px; border:1px solid black; border-radius:0;' %>
+		  	<%= f.radio_button :is_active, :true %>
+		  	<%= f.label :is_active, "有効", value: :true, :style => "display: inline-block; margin:0 20px 0 5px; font-size:20px;colo" %>
+		  	<%= f.radio_button :is_active, :false %>
+		  	<%= f.label :is_active, "無効", value: :false, :style => "display: inline-block; margin:0 20px 0 5px; font-size:20px;" %>
+	  		<%= f.submit '追加', class:"btn btn-success" %>
 
-				<%= form_for(@genre, url: admins_genres_path) do |f| %>
-
-					<% if @genre.errors.any? %>
-
-						<section class = "alert alert-warning" style = "border:none; background-color:white;">
-
-				      		<h3 class = "error-headline" style = "margin-top:0; color:red;">
-				      			<%= pluralize(@genre.errors.count, "error") %> prohibited this book from being saved:
-				      		</h3>
-
-							<ul class = "error-list" style = "margin-left:30px;">
-
-								<% @genre.errors.full_messages.each do |message| %>
-									<li class = "errors" style = "color:red;"><%= message %></li>
-								<% end %>
-
-							</ul>
-
-						</section>
-
-					<% end %>
-
-					<%= f.label :name, 'ジャンル' %>
-					<%= f.text_field :name, :class => "name-field",
-						:style => 'width:180px; margin:0 5px 0 10px; border:1px solid black; border-radius:0;' %>
-
-				  	<%= f.radio_button :is_active, :true %>
-				  	<%= f.label :is_active, "有効", value: :true,
-				  		:style => "display: inline-block; margin:0 20px 0 5px; font-size:20px;colo" %>
-
-				  	<%= f.radio_button :is_active, :false %>
-				  	<%= f.label :is_active, "無効", value: :false,
-				  		:style => "display: inline-block; margin:0 20px 0 5px; font-size:20px;" %>
-
-			  		<%= f.submit '追加' %>
-
-				<% end %>
-
-			</div>
-
-			<table style = "width:85%;">
-
-				<thead>
-
-					<tr style = "border-top:2px solid #ccc;border-bottom:2px solid #ccc;">
-
-						<th style = "width:30%;padding:10px;font-size:18px;background-color:#eee;">ジャンル</th>
-						<th style = "width:30%;padding:10px;font-size:18px;background-color:#eee;">状態</th>
-						<th style = "width:30%;padding:10px;font-size:18px;background-color:#eee;"></th>
-
-					</tr>
-
-				</thead>
-
-				<% @genres.each do |genre| %>
-
-					<tbody>
-
-						<tr>
-
-							<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid #eee;
-										line-height:50px;">
-
-								<%= genre.name %>
-
-							</td>
-
-							<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid #eee;
-										line-height:50px;">
-
-								<% if genre.is_active == true %>
-									有効
-								<% elsif genre.is_active == false %>
-									無効
-								<% end %>
-
-							</td>
-
-							<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid #eee;">
-
-								<%= link_to edit_admins_genre_path(genre.id) do %>
-									<button class="btn btn-secondary btn-lg" style = "width:150px;background-color:blue;
-											color:white;" >
-										編集する
-									</button>
-								<% end %>
-
-							</td>
-
-						</tr>
-
-					</tbody>
-
-				<% end %>
-
-			</table>
-
-		</section>
-
+		<% end %>
 	</div>
+
+	<table style = "width:85%;">
+		<thead>
+			<tr style = "border-top:2px solid #ccc;border-bottom:2px solid #ccc;">
+				<th style = "width:30%;padding:10px;font-size:18px;background-color:#eee;">ジャンル</th>
+				<th style = "width:30%;padding:10px;font-size:18px;background-color:#eee;">状態</th>
+				<th style = "width:30%;padding:10px;font-size:18px;background-color:#eee;"></th>
+			</tr>
+		</thead>
+		<% @genres.each do |genre| %>
+			<tbody>
+				<tr>
+					<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid #eee;
+								line-height:50px;">
+						<%= genre.name %>
+					</td>
+					<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid #eee;
+								line-height:50px;">
+						<% if genre.is_active == true %>
+							有効
+						<% elsif genre.is_active == false %>
+							無効
+						<% end %>
+					</td>
+					<td style = "width:30%;padding:15px;font-size:18px;border-bottom:2px solid #eee;">
+						<%= link_to edit_admins_genre_path(genre.id) do %>
+							<button class="btn btn-secondary btn-lg" style = "width:150px;background-color:blue;
+									color:white;" >
+								編集する
+							</button>
+						<% end %>
+					</td>
+				</tr>
+			</tbody>
+		<% end %>
+	</table>
 
 </div>
