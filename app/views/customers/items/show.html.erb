@@ -8,7 +8,8 @@
 
 <h2><%= @item.name %></h2>
 <p><%= @item.introduction %></p>
-<h1>￥ <%= @item.price %>(税込)</h1>
+<!-- <h1>￥ <%= @item.price %>(税込)</h1> -->
+<h1><%= @price_tax.floor %></h1>
 <%= form_for @cart_item do |f| %>
 <%= f.number_field :quantity, min:1, placeholder: "個数選択" %>
 <%= f.hidden_field :item_id, :value => @item.id %>

@@ -5,6 +5,11 @@ class CartItem < ApplicationRecord
    belongs_to :customer
    belongs_to :item
 
+   # 小計
+   def subtotal_price
+      (quantity * item.price * Constants::TAX).round
+   end
+
    def validate_into_cart
       cart_items = self.customer.cart_items
       if (quantity) == nil

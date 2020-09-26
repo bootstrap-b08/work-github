@@ -1,20 +1,58 @@
-
 <h1>注文情報確認</h1>
-aaaaaaaaa
-
 <table class="table">
-  <tr>
-    <th>商品名</th>
-    <th>単価(税込)</th>
-    <th>数量</th>
-    <th>小計</th>
-  </tr>
-  <%= current_customer.cart_items.each do |cart_item| %>
-  <tr>
-    <td><%= cart_item.name %></td>
-    <td><%= cart_item.price %></td>
-    <td><%= cart_item.quantity %></td>
-    <td><%= cart_item.price * cart_item.quantity %></td>
-  </tr>
-  <% end %>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% current_customer.cart_items.each do |cart_item| %>
+      <tr>
+        <td><%= cart_item.item.name %></td>
+        <td><%= (cart_item.item.price * Constants::TAX).round %>円</td>
+        <td><%= cart_item.quantity %></td>
+        <td><%= cart_item.subtotal_price %>円</td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+
+<div class="confirm-prise">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th class="active">送料</th>
+                <td class="text-right"><%= @order.shipping_cost %>円</td>
+              </tr>
+              <tr>
+                <th class="active">商品合計</th>
+                <td class="text-right"><%= current_customer.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} %>円</td>
+              </tr>
+              <tr>
+                <th class="active">請求金額</th>
+                <td class="text-right"><%= @order.billing_amount %>円</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+<div class="confirm-info row">
+        <table>
+          <tr>
+            <th class="col-xs-4">お支払い方法</th>
+            <td class="col-xs-8"><%= @order.payment_method %></td>
+          </tr>
+          <tr>
+            <th class="col-xs-4">お届け先</th>
+            <td class="col-xs-8">
+              <%= @order.postal_code %>
+              <%= @order.shipping_address %><br>
+              <%= @order.delivery_name %>
+            </td>
+          </tr>
+        </table>
+      </div>
