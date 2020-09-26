@@ -10,11 +10,8 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
- @import "bootstrap-sprockets";  /*ここを追加*/
- @import "bootstrap";            /*ここを追加*/
+ @import "bootstrap";
 
  *{
 	margin:0;
@@ -26,27 +23,6 @@
 	content:"";
 	display:block;
 	clear:both;
-}
-
-.items-new-headline{
-	width:200px;
-	margin:40px 0 100px 0;
-	padding-left:30px;
-	background-color:#eee;
-}
-
-.items-index-headline{
-	width:200px;
-	margin:40px 0 20px 0;
-	padding-left:30px;
-	background-color:#eee;
-}
-
-.items-show-headline{
-	width:200px;
-	margin:40px 0 100px 0;
-	padding-left:30px;
-	background-color:#eee;
 }
 
 /*ページネーション自体のデザイン*/
@@ -64,18 +40,4 @@
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
-}
-
-.genre-index-headline{
-	width:270px;
-	margin:40px 0 50px 80px;
-	padding:0 20px 0 30px;
-	background-color:#eee;
-}
-
-.genre-edit-headline{
-	width:200px;
-	margin:40px 0 50px 80px;
-	padding:0 20px 0 30px;
-	background-color:#eee;
 }
