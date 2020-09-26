@@ -1,43 +1,55 @@
-<div class = "row">
+<div class = "container">
 
-	<div class = "col-md-11">
+	<div class = "row my-5">
+		<div class = "offset-md-1">
+			<h3><span class = "px-4 bg-light">商品詳細</span></h3>
+		</div>
+	</div>
 
-		<section class = "items-show">
+	<div class = "col-md-8">
+		<div class = "row">
+			<div class = "col-md-6">
+				<%= attachment_image_tag @item, :image, format: 'jpeg', size: "250x200", fallback: "no_image.jpg",
+				class: "offset-md-2" %>
+			</div>
+			<div class = "col-md-6">
+				<div class = "row mb-5">
+				商品名
+				<%= @item.name %>
+				</div>
+				<div class = "row mb-5">
+				商品説明
+				<%= @item.introduction %>
+				</div>
+				<div class = "row mb-5">
+				ジャンル
+				<%= @item.genre.name %>
+				</div>
+				<div class = "row mb-5">
+				税込価格（税抜価格）
+				<%= @item.price %>
+				（<%= @price_tax.floor %>）円
+				</div>
+				<div class = "row mb-5">
+				販売ステータス
+				<% if @item.is_active == true %>
+					販売中
+				<% elsif @item.is_active == false %>
+					売切れ
+				<% end %>
+				</div>
 
-			<h3 class = "items-show-headline">商品詳細</h3>
+			</div>
+		</div>
+	</div>
 
-			<%= attachment_image_tag @item, :image, format: 'jpeg', size: "250x200",
-				fallback: "/no_image.jpg" %>
-
-			商品名
-			<%= @item.name %>
-
-			商品説明
-			<%= @item.introduction %>
-
-			ジャンル
-			<%= @item.genre.name %>
-
-			税込価格（税抜価格）
-			<%= @item.price %>
-			（<%= @price_tax.floor %>）円
-
-			販売ステータス
-			<% if @item.is_active == true %>
-				販売中
-			<% elsif @item.is_active == false %>
-				売切れ
-			<% end %>
-
-			<%= link_to edit_admins_item_path(@item.id) do %>
-				<button class="btn btn-secondary btn-lg" style = "width:150px;background-color:blue;
-						color:white;" >
-					編集する
-				</button>
-			<% end %>
-
-		</section>
-
+	<div class = "col-md-11 clearfix">
+		<%= link_to edit_admins_item_path(@item.id) do %>
+			<button class = "float-right btn btn-primary">
+				編集する
+			</button>
+		<% end %>
 	</div>
 
 </div>
+

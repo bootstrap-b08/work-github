@@ -56,7 +56,7 @@ Genre.create!(
 # ItemModel
 Item.create!(
               genre_id: 1,
-              image_id: open("./app/assets/images/test.jpg"),
+              image_id: nil,
               name: "洋梨のチーズタルト",
               introduction: "北海道産の最高級カッテージチーズ＆最高級生クリームを贅沢に使用。",
               price: 1000,
@@ -64,7 +64,7 @@ Item.create!(
               )
 Item.create!(
               genre_id: 1,
-              image_id: open("./app/assets/images/test.jpg"),
+              image_id: nil,
               name: "いちごのショートケーキ",
               introduction: "あまおうを贅沢に使用。",
               price: 2000,
@@ -72,7 +72,7 @@ Item.create!(
               )
 Item.create!(
               genre_id: 4,
-              image_id: open("./app/assets/images/test.jpg"),
+              image_id: nil,
               name: "漢方のどあめ",
               introduction: "のどの痛みを緩和。",
               price: 300,
@@ -80,7 +80,7 @@ Item.create!(
               )
 Item.create!(
               genre_id: 3,
-              image_id: open("./app/assets/images/test.jpg"),
+              image_id: nil,
               name: "シェフの気まぐれマドレーヌ",
               introduction: "フランス産 最高級バターを贅沢に使用。",
               price: 500,
@@ -88,7 +88,7 @@ Item.create!(
               )
 Item.create!(
               genre_id: 2,
-              image_id: open("./app/assets/images/test.jpg"),
+              image_id: nil,
               name: "焼きプリン",
               introduction: "卵の風味が強いプリンを香ばしく焼き上げました。",
               price: 1000,
@@ -96,7 +96,7 @@ Item.create!(
               )
 Item.create!(
               genre_id: 1,
-              image_id: open("./app/assets/images/test.jpg"),
+              image_id: nil,
               name: "クリスマスドームケーキ",
               introduction: "クリスマスに豪華な一品をどうぞ。",
               price: 2000,

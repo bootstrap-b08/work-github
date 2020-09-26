@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get '/orders/count' => 'orders#count', as: "order_count" # 注文件数画面への遷移
     patch '/orders/:id/order_status' => 'orders#order_status_update', as: "order_status" # 注文ステータスupdate
     patch '/orders/:id/item_status' => 'orders#item_status_update', as: "item_status" # 製作ステータスupdate
+    get '/searches' => 'searches#search'
   end
 
   #customer

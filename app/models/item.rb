@@ -8,6 +8,14 @@ class Item < ApplicationRecord
 	has_many :items, dependent: :destroy
 	belongs_to :genre, optional: true
 	attachment :image
+
+	def self.search(word)
+    if word == ""
+      @items = Item.all
+    else
+      @items = Item.where("name LIKE?", "%#{word}%")
+    end
+  end
 end
 
 def price_with_tax

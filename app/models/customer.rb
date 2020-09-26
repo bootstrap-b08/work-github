@@ -36,4 +36,12 @@ class Customer < ApplicationRecord
     quantity
   end
 
+  def self.search(word)
+    if word == ""
+      @customers = Customer.all
+    else
+      @customers = Customer.where(["(family_name LIKE?) OR (first_name LIKE?)", "%#{word}%", "%#{word}%"])
+    end
+  end
+
 end

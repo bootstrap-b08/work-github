@@ -1,91 +1,62 @@
-<div class = "row">
+<div class = "container">
 
-	<div class = "col-md-11">
+	<div class = "row my-5">
+		<div class = "offset-md-1">
+			<h3><span class = "px-4 bg-light">商品一覧</span></h3>
+		</div>
+	</div>
 
-		<section class = "items-index">
+	<div class = "col-md-11 clearfix">
+		<%= link_to new_admins_item_path do %>
+			<button class = "float-right btn btn-info rounded-circle">+</button>
+		<% end %>
+	</div>
 
-			<h3 class = "items-index-headline">商品一覧</h3>
-
-			<%= link_to new_admins_item_path do %>
-
-				<button class = "btn btn-default" style = "float:right;">+</button>
-
-			<% end %>
-
-			<table style = "width:100%;">
-
-				<thead>
-
-					<tr style = "border-top:2px solid black;border-bottom:2px solid black;">
-
-						<th style = "width:10%;padding:10px;font-size:18px;background-color:#eee;">商品ID</th>
-						<th style = "width:30%;padding:10px;font-size:18px;background-color:#eee;">商品名</th>
-						<th style = "width:10%;padding:10px;font-size:18px;background-color:#eee;">税抜価格</th>
-						<th style = "width:30%;padding:10px;font-size:18px;background-color:#eee;">ジャンル</th>
-						<th style = "width:10%;padding:10px;font-size:18px;background-color:#eee;">ステータス</th>
-
+	<div class = "row">
+		<div class = "col-md-11">
+			<table class = "table table-hover">
+				<thead class = "thead-light">
+					<tr>
+						<th>商品ID</th>
+						<th>商品名</th>
+						<th>税抜価格</th>
+						<th>ジャンル</th>
+						<th>ステータス</th>
 					</tr>
-
 				</thead>
-
 				<% @items.each do |item| %>
-
 					<tbody>
-
 						<tr>
-
-							<td style = "width:10%;padding:10px;font-size:18px;border-bottom:2px solid black;
-										line-height:50px;">
-
+							<td>
 								<%= item.id %>
-
 							</td>
-
-							<td style = "width:30%;padding:10px;font-size:18px;border-bottom:2px solid black;
-										line-height:50px;">
-
+							<td>
 								<%= link_to item.name, admins_item_path(item.id) %>
-
 							</td>
-
-							<td style = "width:10%;padding:10px;font-size:18px;border-bottom:2px solid black;
-										line-height:50px;">
-
+							<td>
 								<%= item.price %>
-
 							</td>
-
-							<td style = "width:30%;padding:10px;font-size:18px;border-bottom:2px solid black;
-										line-height:50px;">
-
+							<td>
 								<%= item.genre.name %>
-
 							</td>
-
-							<td style = "width:10%;padding:10px;font-size:18px;border-bottom:2px solid black;
-										line-height:50px;">
-
+							<td>
 								<% if item.is_active == true %>
 									販売中
 								<% elsif item.is_active == false %>
 									売切れ
 								<% end %>
-
 							</td>
-
 						</tr>
-
 					</tbody>
-
 				<% end %>
-
 			</table>
+		</div>
+	</div>
 
+	<div class = "row">
+		<div class = "offset-md-4">
 			<%= paginate @items %>
-
-		</section>
-
+		</div>
 	</div>
 
 </div>
-
