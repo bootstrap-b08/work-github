@@ -11,7 +11,7 @@
   <% current_customer.cart_items.each do |cart_item| %>
   <tr>
     <td><%= cart_item.item.name %></td>
-    <td><%= cart_item.item.price %>円</td>
+    <td><%= (cart_item.item.price * Constants::TAX).round %>円</td>
 
     <td>
       <%= form_for (cart_item) do |f|%>

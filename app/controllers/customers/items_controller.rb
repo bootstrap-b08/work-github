@@ -18,19 +18,9 @@ class Customers::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @genres = Genre.all
     @cart_item = CartItem.new(item_id: @item.id)
-    price_with_tax
   end
 
   def create
   end
-
-
-  private
-  #追加
-  def price_with_tax
-    item = Item.find(params[:id])
-    @price_tax = item.price * 1.1
-  end
-  #--↑
 
 end

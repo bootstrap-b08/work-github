@@ -14,7 +14,7 @@ class Order < ApplicationRecord
 	end
 
 	# 商品合計
-	def product_sum
+	def item_sum
 		total = 0
 		order_items.each do |order_item|
 			total += order_item.subtotal_price

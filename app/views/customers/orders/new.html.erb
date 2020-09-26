@@ -6,14 +6,14 @@
 
 <div class="">
   <h4>
-    <%= f.radio_button :payment_method, "クレジットカード"%>
+    <%= f.radio_button :payment_method, "クレジットカード", checked: true %>
     <%= f.label(:payment_method, "クレジットカード")%>
   </h4>
 </div>
 
 <div class="">
   <h4>
-    <%= f.radio_button :payment_method, "銀行振込", checked: true%>
+    <%= f.radio_button :payment_method, "銀行振込" %>
     <%= f.label(:payment_method, "銀行振込")%>
   </h4>
 </div>
