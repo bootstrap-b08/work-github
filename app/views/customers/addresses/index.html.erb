@@ -1,1 +1,62 @@
-test
+<div class="container">
+  <div class="row">
+    <div class="offset-1">
+      <h2 class="">配送先登録/一覧</h2>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="offset-2">
+      <%= form_for(@address_new) do |f| %>
+      　<p>郵便番号(ハイフンなし)</p>
+        <div class="form-group row">
+          <%= f.text_field :post_code, class: "form-control", placeholder: "郵便番号" %>
+        </div>
+        <p>住所</p>
+        <div class="form-group row">
+          <%= f.text_field :address, class: "form-control", placeholder: "住所" %>
+        </div>
+        <p>宛名</p>
+        <div class="form-group row">
+          <%= f.text_field :name, class: "form-control col-6", placeholder: "宛名" %>
+        </div>
+
+        <div class="row">
+          <%= f.submit "登録する", class: "btn btn-success pull-right" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="">
+    <table class="table table-bordered table-hover">
+      <thead>
+       <tr class="active">
+         <th class="col-xs-2">郵便番号</th>
+         <th class="col-xs-5">住所</th>
+         <th class="col-xs-2">宛名</th>
+         <th class="col-xs-3"></th>
+       <tr>
+      </thead>
+
+     <tbody>
+    <% @addresses.each do |address| %>
+    <tr>
+      <td><%= address.post_code %></td>
+      <td><%= address.address %></td>
+      <td><%= address.name %></td>
+      <td class="text-center"><%= link_to "編集する", edit_address_path(address),  class: "btn btn-primary " %>
+          <%= link_to "削除する", address_path(address), method: :delete ,data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        </td>
+     </tr>
+  <% end %>
+     </tbody>
+    </table>
+  </tr>
+</tr>
+</thead>
+</table>
+</div>
+
+
+   </div>
+</div>
+
