@@ -1,0 +1,93 @@
+<% if @range == '1' %>
+	<section class = "customers-index">
+		<h3 class = "customers-index-headline">会員一覧</h3>
+		<table style = "width:100%;">
+			<thead>
+				<tr style = "border-top:2px solid black;border-bottom:2px solid black;">
+					<th style = "width:10%;padding:10px;font-size:18px;background-color:#eee;">会員ID</th>
+					<th style = "width:30%;padding:10px;font-size:18px;background-color:#eee;">氏名</th>
+					<th style = "width:10%;padding:10px;font-size:18px;background-color:#eee;">メールアドレス</th>
+					<th style = "width:10%;padding:10px;font-size:18px;background-color:#eee;">ステータス</th>
+				</tr>
+			</thead>
+			<% @customers.each do |customer| %>
+				<tbody>
+					<tr>
+						<td style = "width:10%;padding:10px;font-size:18px;border-bottom:2px solid black;
+									line-height:50px;">
+							<%= customer.id %>
+						</td>
+						<td style = "width:30%;padding:10px;font-size:18px;border-bottom:2px solid black;
+									line-height:50px;">
+							<%= link_to admins_customer_path(customer.id) do %>
+								<%= customer.family_name %><%= customer.first_name %>
+							<% end %>
+						</td>
+						<td style = "width:10%;padding:10px;font-size:18px;border-bottom:2px solid black;
+									line-height:50px;">
+							<%= customer.email %>
+						</td>
+						<td style = "width:10%;padding:10px;font-size:18px;border-bottom:2px solid black;
+									line-height:50px;">
+							<% if customer.is_deleted == false %>
+								有効
+							<% elsif customer.is_deleted == true %>
+								退会済み
+							<% end %>
+						</td>
+					</tr>
+				</tbody>
+			<% end %>
+		</table>
+		<%= paginate @customers %>
+	</section>
+<% elsif @range == '2' %>
+	<section class = "items-index">
+		<h3 class = "items-index-headline">商品一覧</h3>
+		<%= link_to new_admins_item_path do %>
+			<button class = "btn btn-default" style = "float:right;">+</button>
+		<% end %>
+		<table style = "width:100%;">
+			<thead>
+				<tr style = "border-top:2px solid black;border-bottom:2px solid black;">
+					<th style = "width:10%;padding:10px;font-size:18px;background-color:#eee;">商品ID</th>
+					<th style = "width:30%;padding:10px;font-size:18px;background-color:#eee;">商品名</th>
+					<th style = "width:10%;padding:10px;font-size:18px;background-color:#eee;">税抜価格</th>
+					<th style = "width:30%;padding:10px;font-size:18px;background-color:#eee;">ジャンル</th>
+					<th style = "width:10%;padding:10px;font-size:18px;background-color:#eee;">ステータス</th>
+				</tr>
+			</thead>
+			<% @items.each do |item| %>
+				<tbody>
+					<tr>
+						<td style = "width:10%;padding:10px;font-size:18px;border-bottom:2px solid black;
+									line-height:50px;">
+							<%= item.id %>
+						</td>
+						<td style = "width:30%;padding:10px;font-size:18px;border-bottom:2px solid black;
+									line-height:50px;">
+							<%= link_to item.name, admins_item_path(item.id) %>
+						</td>
+						<td style = "width:10%;padding:10px;font-size:18px;border-bottom:2px solid black;
+									line-height:50px;">
+							<%= item.price %>
+						</td>
+						<td style = "width:30%;padding:10px;font-size:18px;border-bottom:2px solid black;
+									line-height:50px;">
+							<%= item.genre.name %>
+						</td>
+						<td style = "width:10%;padding:10px;font-size:18px;border-bottom:2px solid black;
+									line-height:50px;">
+							<% if item.is_active == true %>
+								販売中
+							<% elsif item.is_active == false %>
+								売切れ
+							<% end %>
+						</td>
+					</tr>
+				</tbody>
+			<% end %>
+		</table>
+		<%= paginate @items %>
+	</section>
+<% end %>

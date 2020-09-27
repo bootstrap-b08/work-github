@@ -17,4 +17,31 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :addresses, dependent: :destroy
   has_many :orders, dependent: :destroy
+
+  # カートアイテム合計
+  def cart_item_sum
+    total = 0
+    cart_items.each do |cart_item|
+      total += cart_item.subtotal_price
+    end
+    total
+  end
+
+  # カート商品合計個数
+  def cart_total_count
+    quantity = 0
+    cart_items.each do |cart_item|
+      quantity += cart_item.quantity
+    end
+    quantity
+  end
+
+  def self.search(word)
+    if word == ""
+      @customers = Customer.all
+    else
+      @customers = Customer.where(["(family_name LIKE?) OR (first_name LIKE?)", "%#{word}%", "%#{word}%"])
+    end
+  end
+
 end

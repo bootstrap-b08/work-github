@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     patch '/orders/:id/order_status' => 'orders#order_status_update', as: "order_status" # 注文ステータスupdate
     patch '/orders/:id/product_status' => 'orders#product_status_update', as: "product_status" # 製作ステータスupdate
     get '/today/orders' => 'orders#index', as: "today_orders" # TOP,本日受注した注文数 => 注文履歴の表示データ用
+    get '/searches' => 'searches#search'
   end
 
   #customer
@@ -28,15 +29,6 @@ Rails.application.routes.draw do
       post 'customers/sign_up' => 'registrations#create', as: 'customers_registration'
       get 'customers/registration_edit' => 'registrations#edit', as: 'edit_customer_registration'
     end
-      # resource :customers,except: [:edit, :show, :update,],
-      #     controller: 'registrations',
-      #     as: :customers_registration do
-      #       get 'cancel'
-      #     end
-    # get 'signup' => 'registrations#new', as: 'new_customers_registration'
-    # post 'signup' => 'registrations#create', as: 'customers_registration'
-    # get 'signup/cancel' => 'registrations#cancel', as: 'cancel_customers_registration'
-
     resource :customers, only: [:show, :edit, :update ,:create]
     get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer' #退会画面への遷移
     patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer' #会員ステータスの切替
@@ -51,7 +43,9 @@ Rails.application.routes.draw do
     delete '/cart_items' => 'cart_items#destroy_all' #カートアイテムを全て削除
 
     resources :items, only: [:index, :show]
-    resources :genres, only: [:index]
+    resources :genres, only: [:index] do
+    resources :items, only: [:index]
+  end
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
