@@ -3,7 +3,7 @@ class Admins::OrdersController < ApplicationController
 	before_action :set_order, except: [:index]
 
 	def index
-		@orders = Order.all
+		@orders = Order.page(params[:page]).per(10)
 	end
 
 	def show

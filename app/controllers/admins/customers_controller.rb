@@ -4,7 +4,7 @@ class Admins::CustomersController < ApplicationController
 	before_action :full_name, except: :index
 
 	def index
-		@customers = Customer.all
+		@customers = Customer.page(params[:page]).per(10)
 	end
 
 	def show
