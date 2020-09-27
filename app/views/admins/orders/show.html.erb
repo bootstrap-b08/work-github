@@ -19,10 +19,12 @@
 			</tr>
 			<tr>
 				<th>注文ステータス</th>
-				<%= form_for @order, url:admins_order_status_path do |f| %>
-				<td><%= f.select :order_status, Order.order_statuses.keys.to_a %></td>
-                <th><%= f.submit '更新' %></th>
-                <% end %>
+				<td>
+					<%= form_for @order, url:admins_order_status_path(@order.id), data: {"turbolinks" => false} do |f| %>
+					<%= f.select :order_status, Order.order_statuses.keys.to_a %>
+                	<%= f.submit '更新' %>
+                	<% end %>
+            	</td>
 			</tr>
 		</tbody>
 	</table>
@@ -46,10 +48,13 @@
 				<td><%= order_item.quantity %></td>
 				<td><%= sub_total = (order_item.order_price).to_i * order_item.quantity %>円
 					<% sum_all += sub_total %></td>
-				<%= form_for order_item, url:admins_product_status_path(order_item.id) do |f| %>
-				<td><%= f.select :product_status, OrderItem.product_statuses.keys.to_a %></td>
-                <th><%= f.submit '更新' %></th>
-                <% end %>
+				<td>
+					<%= form_for order_item, url:admins_product_status_path(order_item.id) do |f| %>
+					<%= f.select :product_status, OrderItem.product_statuses.keys.to_a %>
+                	<%= f.submit '更新' %>
+                	<% end %>
+            	</td>
+            </tr>
 			<% end %>
 		</tbody>
 	</table>

@@ -46,9 +46,5 @@ class Admins::OrdersController < ApplicationController
 	def item_params
 	  params.require(:item).permit(:price)
 	end
-
-	# def order_price
-	#   item = Item.find(params[:id])
-	#   order_price = (item.price * 1.1).round
-	# end
+  
 end

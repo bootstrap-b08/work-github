@@ -1,4 +1,3 @@
-
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -7,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 
 #   Character.create(name: 'Luke', movie: movies.first)
+
 # CustomerModel(2)
 Customer.create!(
                   is_deleted: "false",
@@ -44,6 +44,7 @@ Customer.create!(
                   postel_code: "1111111",
                   address: "東京都 渋谷区",
                   )
+
 
 Admin.create!(
 	    email: "admin@example.jp",
@@ -130,7 +131,37 @@ Address.create!(
    address: "東京都 新宿区 新宿4丁目",
 )
 
+Item.create!(
+      id: 2,
+      genre_id: 2,
+      name: 'プリン',
+      image_id: 2,
+      introduction: 'プルプルしてます。',
+      price: 300,
+      is_active: true,
+      )
 
+OrderItem.create!(
+      order_id: 1,
+      item_id: 1,
+      quantity: 4,
+      order_price: 270,
+      product_status: 2,
+    )
+
+OrderItem.create!(
+      order_id: 1,
+      item_id: 2,
+      quantity: 6,
+      order_price: 230,
+      product_status: 1,
+      )
+
+Genre.create!(
+      id: 1,
+      name: 'ケーキ',
+      is_active: true,
+      )
 
 # order_itemの支払い金額（order_priceを計算する）
 OrderItem.all.each do |order_item|
@@ -140,3 +171,4 @@ end
 Order.all.each do |order|
   order.update(billing_amount: order.order_items.inject(0){|result, order_product| result + order_item.order_price })
 end
+
