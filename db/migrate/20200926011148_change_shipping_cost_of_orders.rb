@@ -1,0 +1,9 @@
+class ChangeShippingCostOfOrders < ActiveRecord::Migration[5.2]
+  def up
+    change_column :orders, :shipping_cost, :integer, null: false ,default: '800'
+  end
+
+  def down
+    change_column :orders, :shipping_cost, :integer, null: false
+  end
+end

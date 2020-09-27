@@ -1,1 +1,37 @@
-<h1>homes#top</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= render "layouts/genre_search", genres: @genres %>
+    </div>
+
+    <div class="col-lg-6">
+      ようこそ、NaganoCakeへ！
+      このサイトは、ケーキ販売のECサイトになります。
+      会員でない方も商品の閲覧はできますが、
+      購入には会員登録が必要になります。
+      <h1>オススメ商品</h1>
+
+
+      <div class="flex">
+        <% @items.sample(4).each do |item| %>
+        <%= link_to item_path(item.id), :style=>"color: black; text-decoration: none;" do%>
+
+        <div class="">
+          <%= attachment_image_tag item, :image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg",
+        class: "offset-md-2" %>
+        </div>
+
+        <div class="">
+          <%= item.name %>
+        </div>
+
+        <div class="">
+          ¥<%= item.price %>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
