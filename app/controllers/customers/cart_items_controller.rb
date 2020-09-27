@@ -2,7 +2,6 @@ class Customers::CartItemsController < ApplicationController
   def index
      @customer = Customer.find(current_customer.id)
      @cart_items = current_customer.cart_items
-     @total_price = calculate(current_customer)
   end
 
 def create
