@@ -1,5 +1,5 @@
 class Admins::CustomersController < ApplicationController
-	# before_action :if_not_admins
+	before_action :authenticate_admin!
 	before_action :set_customer, except: :index
 	before_action :full_name, except: :index
 
@@ -23,10 +23,6 @@ class Admins::CustomersController < ApplicationController
 	end
 
 	private
-	def if_not_admins
-		redirect_to root_path unless admin_signed_in?
-	end
-
 	def set_customer
 		@customer = Customer.find(params[:id])
 	end

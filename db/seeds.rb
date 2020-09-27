@@ -4,12 +4,13 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Admin.create!(
-# 	email: "admin@example.jp",
-#       password:  "11111111",
-# )
+Admin.create!(
+	email: "admin@example.jp",
+      password:  "11111111",
+)
 
 # # CustomerModel(2)
 # Customer.create!(
@@ -82,32 +83,34 @@
 #       product_status: 1,
 #       )
 
-Item.create!(
-      id: 1,
-      genre_id: 1,
-      name: 'ショートケーキ',
-      image_id: 1,
-      introduction: 'イチゴが美味しいです。',
-      price: 500,
-      is_active: true,
-      )
+# Item.create!(
+#       id: 1,
+#       genre_id: 1,
+#       name: 'ショートケーキ',
+#       image_id: 1,
+#       introduction: 'イチゴが美味しいです。',
+#       price: 500,
+#       is_active: true,
+#       )
 
-Item.create!(
-      id: 2,
-      genre_id: 2,
-      name: 'プリン',
-      image_id: 2,
-      introduction: 'プルプルしてます。',
-      price: 300,
-      is_active: true,
-      )
+# Item.create!(
+#       id: 2,
+#       genre_id: 2,
+#       name: 'プリン',
+#       image_id: 2,
+#       introduction: 'プルプルしてます。',
+#       price: 300,
+#       is_active: true,
+#       )
 
-Genre.create!(
-      id: 1,
-      name: 'ケーキ',
-      )
+# Genre.create!(
+#       id: 1,
+#       name: 'ケーキ',
+#       is_active: true,
+#       )
 
-Genre.create!(
-      id: 2,
-      name: 'プリン',
-      )
+# Genre.create!(
+#       id: 2,
+#       name: 'プリン',
+#       is_active: true,
+#       )

@@ -4,7 +4,13 @@
 			<tr>
 				<th>顧客ID</th>
 				<th><%= @customer.id %></th>
-				<th>ステータス</th>
+				<th>
+					<% if @customer.is_deleted == false %>
+						有効会員
+					<% elsif @customer.is_deleted == true %>
+						退会済み
+					<% end %>
+				</th>
 			</tr>
 			<tr>
 				<th>氏名</th>

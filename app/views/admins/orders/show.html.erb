@@ -3,8 +3,10 @@
 		<tbody>
 			<tr>
 				<th>購入者</th>
-				<th><%= @order.customer.family_name %>
+				<th><%= link_to admins_customer_path(@order.customer.id) do %>
+					<%= @order.customer.family_name %>
 					<%= @order.customer.first_name %>
+					<% end %>
 				</th>
 			</tr>
 			<tr>
@@ -17,7 +19,10 @@
 			</tr>
 			<tr>
 				<th>注文ステータス</th>
-				<th><%= @order.order_status %></th>
+				<%= form_for @order, url:admins_order_status_path do |f| %>
+				<td><%= f.select :order_status, Order.order_statuses.keys.to_a %></td>
+                <th><%= f.submit '更新' %></th>
+                <% end %>
 			</tr>
 		</tbody>
 	</table>
@@ -33,14 +38,18 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @order.order_items.each do |item| %>
+			<% sum_all = 0 %>
+			<% @order.order_items.each do |order_item| %>
 			<tr>
-				<td><%= item.name %></td>
-				<td><%= item.order_pricede %></td>
-				<td><%= item.quantity %></td>
-				<td><%= item.order_price %>
-				<td><%= item.order_status %></td>
-			</tr>
+				<td><%= order_item.item.name %></td>
+				<td><%= order_item.order_price %></td>
+				<td><%= order_item.quantity %></td>
+				<td><%= sub_total = (order_item.order_price).to_i * order_item.quantity %>円
+					<% sum_all += sub_total %></td>
+				<%= form_for order_item, url:admins_product_status_path(order_item.id) do |f| %>
+				<td><%= f.select :product_status, OrderItem.product_statuses.keys.to_a %></td>
+                <th><%= f.submit '更新' %></th>
+                <% end %>
 			<% end %>
 		</tbody>
 	</table>
@@ -49,15 +58,15 @@
 		<tbody>
 			<tr>
 				<th>商品合計</th>
-				<th><%= @order.name %></th>
+				<th><%= sum_all %>円</th>
 			</tr>
 			<tr>
 				<th>送料</th>
-				<th><%= @order.shipping_address %></th>
+				<th><%= @order.shipping_cost %>円</th>
 			</tr>
 			<tr>
 				<th>請求金額合計</th>
-				<th><%= @order.payment_method %></th>
+				<th><%= sum_all + @order.shipping_cost.to_i %>円</th>
 			</tr>
 		</tbody>
 	</table>

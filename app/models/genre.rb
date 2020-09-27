@@ -3,3 +3,4 @@ class Genre < ApplicationRecord
 	validates :is_active, presence: true
 	has_many :items
 end
+
