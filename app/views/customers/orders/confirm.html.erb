@@ -1,6 +1,4 @@
-
-<h1>注文情報確認</h1>
-aaaaaaaaa
+<h1>注文確認画面</h1>
 
 <table class="table">
   <tr>
@@ -8,13 +6,20 @@ aaaaaaaaa
     <th>単価(税込)</th>
     <th>数量</th>
     <th>小計</th>
+    <th></th>
   </tr>
-  <%= current_customer.cart_items.each do |cart_item| %>
+  <% @cart_items.each do |cart_item|%>
   <tr>
-    <td><%= cart_item.name %></td>
-    <td><%= cart_item.price %></td>
+    <td>
+      <%= attachment_image_tag cart_item.item, :image, format: 'jpeg', size: "50x50" %>
+      <%= cart_item.item.name %></td>
+    <td><%= (cart_item.item.price * 1.1).floor %></td>
     <td><%= cart_item.quantity %></td>
-    <td><%= cart_item.price * cart_item.quantity %></td>
-  </tr>
+    <td><%= (cart_item.quantity * cart_item.item.price * 1.1).floor %></td>
   <% end %>
 </table>
+
+<h3>支払い方法</h3>
+<%=  %>
+
+<h3>お届け先</h3>

@@ -14,16 +14,32 @@
       <strong>(全<%= @items.count %>件)</strong>
 
 
+      <div class="flex">
         <% @items.each do |item| %>
         <%= link_to item_path(item.id), :style=>"color: black; text-decoration: none;" do%>
-        <p>画像</p>
-        <p><%= item.name %></p>
-        <p>¥<%= item.price %></p>
-        <% end %>
-        <% end %>
 
+        <div class="">
+          <%= attachment_image_tag item, :image, format: 'jpeg', size: "100x100" %>
+        </div>
+
+        <div class="">
+          <%= item.name %>
+        </div>
+
+        <div class="">
+          ¥<%= item.price %>
+        </div>
+        <% end %>
+        <% end %>
+</div>
 
     </div>
-
   </div>
 </div>
+
+<style>
+  .flex {
+    display: flex;
+    justify-content:space-around;
+  }
+</style>

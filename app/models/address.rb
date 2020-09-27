@@ -4,4 +4,9 @@ class Address < ApplicationRecord
    # 郵便番号のフォーマット指定 ハイフン無し７桁固定 Viewのフォーム設定
    validates :address, presence: true
    belongs_to :customer
+
+   def full_address
+    "#{post_code} #{address} #{name}"
+   end
+
 end
