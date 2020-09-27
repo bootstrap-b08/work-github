@@ -80,3 +80,5 @@ gem 'pry-rails'
 
 #環境変数
 gem 'dotenv-rails', require: 'dotenv/rails-now'
+
+gem 'rails-i18n'

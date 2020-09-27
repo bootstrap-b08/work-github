@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  #admins
+  #adminss
   scope module: :admins do
     devise_for :admins
   end
@@ -9,10 +9,11 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :index, :edit, :update]
     resources :items, except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show, :updagte]
     get '/orders/count' => 'orders#count', as: "order_count" # 注文件数画面への遷移
     patch '/orders/:id/order_status' => 'orders#order_status_update', as: "order_status" # 注文ステータスupdate
-    patch '/orders/:id/item_status' => 'orders#item_status_update', as: "item_status" # 製作ステータスupdate
+    patch '/orders/:id/product_status' => 'orders#product_status_update', as: "product_status" # 製作ステータスupdate
+    get '/today/orders' => 'orders#index', as: "today_orders" # TOP,本日受注した注文数 => 注文履歴の表示データ用
     get '/searches' => 'searches#search'
   end
 
