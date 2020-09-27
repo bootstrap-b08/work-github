@@ -8,6 +8,7 @@ class Item < ApplicationRecord
 	has_many :items, dependent: :destroy
 	belongs_to :genre, optional: true
 	attachment :image
+	has_many :order_items, dependent: :destroy
 
 	def self.search(word)
     if word == ""

@@ -44,10 +44,11 @@ Customer.create!(
                   postel_code: "1111111",
                   address: "東京都 渋谷区",
                   )
+
 Admin.create!(
-			    email: "admin@example.jp",
-			    password:  "11111111",
-			)
+	email: "admin@example.jp",
+      password:  "11111111",
+)
 
 Genre.create!(
               name: "ケーキ",
@@ -139,3 +140,4 @@ end
 Order.all.each do |order|
   order.update(billing_amount: order.order_items.inject(0){|result, order_product| result + order_item.order_price })
 end
+
