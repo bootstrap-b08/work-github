@@ -13,9 +13,9 @@
 				<% @orders.each do |order| %>
 				<tr>
 					<td><%= link_to admins_order_path(order.id) do %>
-						<%= l order.created_at %>
-						<% end %>
-						</td>
+				      <%= order.created_at.strftime('%Y/%m/%d') %>
+              <% end %>
+          </td>
 					<td><%= order.customer.family_name %>
 						<%= order.customer.first_name %></td>
 					<td><%= order.order_items.sum(:quantity) %></td>
@@ -24,4 +24,10 @@
 				<% end %>
 			</tbody>
 		</table>
+	</div>
+
+	<div class = "row">
+		<div class = "offset-md-4">
+			<%= paginate @orders %>
+		</div>
 	</div>

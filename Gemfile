@@ -81,4 +81,6 @@ gem 'pry-rails'
 #環境変数
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 
+
+# 翻訳対応
 gem 'rails-i18n'

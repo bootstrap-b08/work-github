@@ -2,6 +2,7 @@ class Customers::OrdersController < ApplicationController
   before_action :authenticate_customer!
   def index
     @orders = current_customer.orders.order("created_at DESC")
+    @orders = Order.page(params[:page]).per(10)
   end
 
   def new
@@ -21,6 +22,7 @@ class Customers::OrdersController < ApplicationController
       @order.shipping_address = Address.find(set_address[:id]).address
       @order.delivery_name = Address.find(set_address[:id]).name
     when "新しいお届け先"
+       session[:order] = params[:shipping_address_type]
     end
     # 請求金額の計算と格納
     @order.billing_amount = current_customer.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.shipping_cost
@@ -35,9 +37,11 @@ class Customers::OrdersController < ApplicationController
             quantity: cart_item.quantity,
             order_price: (cart_item.item.price * Constants::TAX).round,
             order_id: @order.id)
-            @order_items.save
+            @order_items.save!
           end
-        Address.create!(customer_id: current_customer.id, post_code: @order.postal_code, address: @order.shipping_address, name: @order.delivery_name)
+          if session[:order] == "新しいお届け先"
+            Address.create!(customer_id: current_customer.id, post_code: @order.postal_code, address: @order.shipping_address, name: @order.delivery_name)
+          end
         # オーダー確定後ユーザーのカートを削除する
         current_customer.cart_items.destroy_all
     end
