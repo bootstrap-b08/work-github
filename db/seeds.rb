@@ -23,6 +23,18 @@ Customer.create!(
 Customer.create!(
                   is_deleted: "false",
                   family_name: "山田",
+                  first_name: "花子9号",
+                  family_name_kana: "ヤマダ",
+                  first_name_kana: "ハナコ",
+                  telephone_number: "00000000000",
+                  email: "hoge00@mail",
+                  password: "hogehoge",
+                  postel_code: "0000000",
+                  address: "東京都 渋谷区",
+                  )
+Customer.create!(
+                  is_deleted: "false",
+                  family_name: "山田",
                   first_name: "花子2号",
                   family_name_kana: "ヤマダ",
                   first_name_kana: "ハナコ",

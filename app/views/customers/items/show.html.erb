@@ -2,13 +2,12 @@
 
 <!-- 画像 -->
 <div class="">
-  
+  <%= attachment_image_tag @item, :image, format: 'jpeg', size: "100x100" %>
 </div>
 
 
 <h2><%= @item.name %></h2>
 <p><%= @item.introduction %></p>
-<!-- <h1>￥ <%= @item.price %>(税込)</h1> -->
 <h1><%= (@item.price * Constants::TAX).round %>(税込)</h1>
 <%= form_for @cart_item do |f| %>
 <%= f.number_field :quantity, min:1, placeholder: "個数選択" %>

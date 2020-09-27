@@ -2,6 +2,7 @@
 
 <h3>支払い方法</h3>
 
+<<<<<<< HEAD
 <%= form_for(@order, url: orders_confirm_path) do |f| %>
 
 <div class="">
@@ -13,6 +14,7 @@
 
 <div class="">
   <h4>
+
     <%= f.radio_button :payment_method, "銀行振込" %>
     <%= f.label(:payment_method, "銀行振込")%>
   </h4>
@@ -45,7 +47,7 @@
     <%= f.label :shipping_address, "新しいお届け先" %>
   </h4>
 </div>
-
+<div class="row">
 <div class="">
   <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
   <%= f.text_field :postal_code %>
@@ -60,12 +62,11 @@
   <%= f.label :delivery_name, "宛名" %>
   <%= f.text_field :delivery_name %>
 </div>
+<% end %>
 
 <div class="">
   <%= f.submit :"確認画面へ進む", :class => "btn btn-primary" %>
 </div>
+</div>
+
 <% end %>
-
-
-
-
