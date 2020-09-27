@@ -2,8 +2,7 @@ class Customers::ItemsController < ApplicationController
 
 
   def index
-    @items = Item.all
-    @items = Item.page(params[:page]).reverse_order
+    # @items = Item.all
     @genres = Genre.all
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
@@ -11,6 +10,7 @@ class Customers::ItemsController < ApplicationController
     else
       @items = Item.where(is_active: "true")
     end
+      @items = Item.page(params[:page]).per(10)
   end
 
 

@@ -11,20 +11,20 @@
     <th></th>
   </tr>
   <% current_customer.cart_items.each do |cart_item| %>
-  <tr>
-    <td><%= cart_item.item.name %>
-      <%= attachment_image_tag cart_item.item, :image, format: 'jpeg', size: "50x50" %>
-    </td>
-    <td><%= (cart_item.item.price * Constants::TAX).round %>円</td>
-    <td>
-      <%= form_for (cart_item) do |f|%>
-      <%= f.number_field :quantity, min:1 %>
-      <%= f.submit "変更", class: "btn btn-primary" %>
-      <% end %>
-    </td>
-    <td><%= cart_item.subtotal_price %></td>
-    <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
-  </tr>
+    <tr>
+      <td><%= cart_item.item.name %>
+        <%= attachment_image_tag cart_item.item, :image, format: 'jpeg', size: "50x50" %>
+      </td>
+      <td><%= (cart_item.item.price * Constants::TAX).round %>円</td>
+      <td>
+        <%= form_for (cart_item) do |f|%>
+        <%= f.number_field :quantity, min:1 %>
+        <%= f.submit "変更", class: "btn btn-primary" %>
+        <% end %>
+      </td>
+      <td><%= cart_item.subtotal_price %></td>
+      <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
+    </tr>
   <% end %>
 </table>
 
@@ -33,6 +33,12 @@
 </div>
 <div class="">合計金額</div>
 <td class="text-right"><%= @customer.cart_item_sum %>円</td>
-<div class="text-center">
-  <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+<div class="">
+  <% if current_customer.cart_items.present? %>
+    <div class="">
+      <%= link_to "情報入力に進む", new_order_path, class:"btn btn-primary" %>
+    </div>
+  <% else %>
+   <p>商品が選択されていません。</p>
+  <% end %>
 </div>

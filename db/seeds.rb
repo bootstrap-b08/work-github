@@ -15,7 +15,7 @@ Customer.create!(
                   family_name_kana: "ヤマダ",
                   first_name_kana: "ハナコ",
                   telephone_number: "00000000000",
-                  email: "hoge2@mail",
+                  email: "hoge01@mail",
                   password: "hogehoge",
                   postel_code: "0000000",
                   address: "東京都 渋谷区",
@@ -27,7 +27,7 @@ Customer.create!(
                   family_name_kana: "ヤマダ",
                   first_name_kana: "ハナコ",
                   telephone_number: "00000000000",
-                  email: "hoge00@mail",
+                  email: "hoge02@mail",
                   password: "hogehoge",
                   postel_code: "0000000",
                   address: "東京都 渋谷区",
@@ -39,14 +39,14 @@ Customer.create!(
                   family_name_kana: "ヤマダ",
                   first_name_kana: "ハナコ",
                   telephone_number: "11111111111",
-                  email: "hoge8@mail",
+                  email: "hoge03@mail",
                   password: "hogehoge",
                   postel_code: "1111111",
                   address: "東京都 渋谷区",
                   )
 
 Admin.create!(
-	email: "admin@example.jp",
+	    email: "admin@example.jp",
       password:  "11111111",
 )
 
@@ -123,12 +123,12 @@ Address.create!(
   address: "東京都 新宿区 新宿3丁目",
 )
 
- Address.create!(
+Address.create!(
    customer_id: 1,
    name: "羽の",
    post_code: "5555555",
    address: "東京都 新宿区 新宿4丁目",
- )
+)
 
 
 
@@ -140,4 +140,3 @@ end
 Order.all.each do |order|
   order.update(billing_amount: order.order_items.inject(0){|result, order_product| result + order_item.order_price })
 end
-

@@ -26,11 +26,17 @@ class Customers::SessionsController < Devise::SessionsController
   # end
   private
     def after_sign_in_path_for(resource)
-    if resource.is_deleted == true
-       sign_out resource
-       new_customer_session_path
-    else
-       items_path
+      if resource.is_deleted == true
+         sign_out resource
+
+         render "customers/sign_in"
+      else
+         items_path
+      end
+    end
+
+    # ログアウト後に遷移するpathを設定
+    def after_sign_out_path_for(resource)
+      root_path
     end
   end
-end
