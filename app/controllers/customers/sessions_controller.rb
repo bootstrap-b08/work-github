@@ -31,7 +31,7 @@ class Customers::SessionsController < Devise::SessionsController
 
          render "customers/sign_in"
       else
-         items_path
+         root_path
       end
     end
 
