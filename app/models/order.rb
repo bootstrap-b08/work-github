@@ -13,6 +13,7 @@ class Order < ApplicationRecord
 		total
 	end
 
+
 	# 商品合計
 	def item_sum
 		total = 0

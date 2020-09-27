@@ -11,6 +11,7 @@ class Customers::OrdersController < ApplicationController
 
   def confirm
     @order = current_customer.orders.build(order_params)
+      @address_create_flag = "false"
     case params[:shipping_address_type]
     when "ご自身の住所"
       @order.postal_code = current_customer.postel_code
@@ -21,6 +22,7 @@ class Customers::OrdersController < ApplicationController
       @order.shipping_address = Address.find(set_address[:id]).address
       @order.delivery_name = Address.find(set_address[:id]).name
     when "新しいお届け先"
+      @address_create_flag = "true"
     end
     # 請求金額の計算と格納
     @order.billing_amount = current_customer.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.shipping_cost
@@ -37,7 +39,9 @@ class Customers::OrdersController < ApplicationController
             order_id: @order.id)
             @order_items.save
           end
-        Address.create!(customer_id: current_customer.id, post_code: @order.postal_code, address: @order.shipping_address, name: @order.delivery_name)
+          if @address_create_flag == "true"
+            Address.create!(customer_id: current_customer.id, post_code: @order.postal_code, address: @order.shipping_address, name: @order.delivery_name)
+          end
         # オーダー確定後ユーザーのカートを削除する
         current_customer.cart_items.destroy_all
     end

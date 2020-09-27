@@ -1,6 +1,6 @@
 class Admins::ItemsController < ApplicationController
 
-	# before_action :authenticate_admin!
+	before_action :authenticate_admin!
 
 	def new
 		@item = Item.new
@@ -9,7 +9,7 @@ class Admins::ItemsController < ApplicationController
 	def create
 		@item = Item.new(item_params)
 		if @item.save
-			redirect_to admins_items_path
+			redirect_to admins_item_path(@item.id)
 		else
 			render :new
 		end
