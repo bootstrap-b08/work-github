@@ -41,7 +41,13 @@
 							<tbody>
 								<tr>
 									<th class="active">商品合計</th>
-									<td class="text-right"><%= @order.item_sum %>円</td><!-- .item_sumはorderモデルで定義あり -->
+									<td class="text-right">
+									   <% sum_all = 0 %>
+									   <% @order.order_items.each do |order_item| %>
+									   <%= sub_total = (order_item.order_price).to_i * order_item.quantity %>円
+					                   <% sum_all += sub_total %>
+					                   <% end %>
+					                   </td>
 								</tr>
 								<tr>
 									<th class="active">配送料</th>
