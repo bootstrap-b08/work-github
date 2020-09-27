@@ -12,7 +12,10 @@
 			<tbody>
 				<% @orders.each do |order| %>
 				<tr>
-					<td><%= order.created_at %></td>
+					<td><%= link_to admins_order_path(order.id) do %>
+						<%= l order.created_at %>
+						<% end %>
+						</td>
 					<td><%= order.customer.family_name %>
 						<%= order.customer.first_name %></td>
 					<td><%= order.order_items.sum(:quantity) %></td>

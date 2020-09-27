@@ -11,13 +11,13 @@ class Admins::OrdersController < ApplicationController
 
 	def order_status_update
 		@order.update(order_params)
-		redirect_back(fallback_location: root_path)
+		redirect_to admins_orders_path(@order)
 	end
 
 	def product_status_update
 		@order_item = OrderItem.find(params[:id])
 		@order_item.update(product_status_params)
-		redirect_back(fallback_location: root_path)
+		redirect_to request.referrer
 	end
 	
 	private

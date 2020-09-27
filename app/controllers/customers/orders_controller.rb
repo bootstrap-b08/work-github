@@ -15,7 +15,7 @@ class Customers::OrdersController < ApplicationController
     when "ご自身の住所"
       @order.postal_code = current_customer.postel_code
       @order.shipping_address = current_customer.address
-      @order.delivery_name = current_customer.first_name + current_customer.family_name
+      @order.delivery_name = current_customer.family_name + current_customer.first_name
     when "登録済み住所から選択"
       @order.postal_code = Address.find(set_address[:id]).post_code
       @order.shipping_address = Address.find(set_address[:id]).address
