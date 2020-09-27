@@ -58,6 +58,6 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # end
   private
     def after_sign_in_path_for(resource)
-       items_path
+       root_path
   end
 end

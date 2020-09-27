@@ -49,6 +49,7 @@ Admin.create!(
 	    email: "admin@example.jp",
       password:  "11111111",
 )
+
 Genre.create!(
               name: "ケーキ",
               is_active: true

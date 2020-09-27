@@ -12,7 +12,9 @@ class Order < ApplicationRecord
 		total
 	end
 
-	# 商品合計(購入前)
+
+
+	# 商品合計
 	def item_sum
 		total = 0
 		order_items.each do |order_item|
@@ -38,6 +40,4 @@ class Order < ApplicationRecord
 		end
 		total + shipping_cost
 	end
-
-	
 end
