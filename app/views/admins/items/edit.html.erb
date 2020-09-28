@@ -46,7 +46,7 @@
 					</div>
 					<div class = "row mb-3">
 					<%= f.label :販売ステータス, class: "col-md-3 d-flex align-items-center" %>
-					<%= f.select 'is_active', options_for_select([['販売中',1],['売切れ',0]]), include_blank: "選択して下さい"%>
+					<%= f.select ('is_active', options_for_select([['販売中',1],['売切れ',0]]), include_blank: "選択して下さい",html:{class:"w-100"})%>
 					</div>
 				</div>
 			</div>
