@@ -11,91 +11,86 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   </head>
 
-  <body
+  <body>
 
-<nav class="navbar navbar-expand-md navbar-light p-5" style="background-color: green;">
-  <a class="navbar-brand" href="/"><%= link_to root_path do %>
-              <%= image_tag 'logo4_img.png', size: '300x100' %>
-            <% end %></a>
+    <nav class="navbar navbar-expand-md navbar-light p-5" style = "background-color:purple;" >
+    <a class="navbar-brand" href="/">
+      <%= link_to root_path do %>
+        <%= image_tag 'logo4_img.png', size: '300x100' %>
+      <% end %>
+    </a>
 
-          <% if admin_signed_in? %>
-            <div class = "row w-100 mr-5">
-              <div class = "col-md-12 text-right">
-                <%= form_tag(admins_searches_path, method: :get) do %>
-                  <%= text_field_tag(:word) %>
-                  <%= select_tag 'range', options_for_select([['会員検索','1'],['商品検索','2']]) %>
-                  <%= submit_tag '検索', class: "btn btn-primary" %>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-            <% end %>
-          
-
-  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#bs-navi" aria-controls="bs-navi" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#bs-navi" aria-controls="bs-navi" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
     <div class="collapse navbar-collapse" id="bs-navi">
-    <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto">
+        <!-- 管理者ログイン後 -->
+        <% if admin_signed_in? %>
+          <li class = "nav-item m-2">
+            <%= link_to "商品一覧", admins_items_path, class: "btn btn-info" %>
+          </li>
+          <li class = "nav-item m-2">
+            <%= link_to "会員一覧", admins_customers_path, class: "btn btn-info" %>
+          </li>
+          <li class = "nav-item m-2">
+            <%= link_to "注文履歴一覧", admins_orders_path, class: "btn btn-info" %>
+          </li>
+          <li class = "nav-item m-2">
+            <%= link_to "ジャンル一覧", admins_genres_path, class: "btn btn-info" %>
+          </li>
+          <li class = "nav-item m-2">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-warning" %>
+          </li>
+        <!-- 会員ログイン後 -->
+        <% elsif customer_signed_in? %>
+          <li class = "nav-item ml-5 pt-2 text-danger">
+            ようこそ、<%= current_customer.family_name %><%= current_customer.first_name %>さん！
+          </li>
+          <li class = "nav-item ml-5">
+            <%= link_to "マイページ", customers_path, class: "btn btn-info" %>
+          </li>
+          <li class = "nav-item ml-5">
+            <%= link_to "商品一覧", items_path, class: "btn btn-info" %>
+          </li>
+          <li class = "nav-item ml-5">
+            <%= link_to "カート", cart_items_path, class: "btn btn-info" %>
+          </li>
+          <li class = "nav-item mr-5 ml-5">
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-warning" %>
+          </li>
+        <!-- ログイン前 -->
+        <% else %>
+          <li class = "nav-item ml-5">
+            <%= link_to "About", homes_about_path, class: "btn btn-info" %>
+          </li>
+          <li class = "nav-item ml-5">
+            <%= link_to "商品一覧", items_path, class: "btn btn-info" %>
+          </li>
+          <li class = "nav-item ml-5">
+            <%= link_to "新規登録", new_customers_registration_path, class: "btn btn-info" %>
+          </li>
+          <li class = "nav-item mr-5 ml-5">
+            <%= link_to "ログイン", new_customer_session_path, class: "btn btn-warning" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
 
+  <% if admin_signed_in? %>
+    <div class = "row w-100">
+      <div class = "col-md-12 text-right">
+        <%= form_tag(admins_searches_path, method: :get) do %>
+          <%= text_field_tag(:word) %>
+          <%= select_tag 'range', options_for_select([['会員検索','1'],['商品検索','2']]) %>
+          <%= submit_tag '検索', class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
-                <!-- 管理者ログイン後 -->
-                <% if admin_signed_in? %>
-                  <li class = "nav-item m-2">
-                    <%= link_to "商品一覧", admins_items_path, class: "btn btn-info" %>
-                  </li>
-                  <li class = "nav-item m-2">
-                    <%= link_to "会員一覧", admins_customers_path, class: "btn btn-info" %>
-                  </li>
-                  <li class = "nav-item m-2">
-                    <%= link_to "注文履歴一覧", admins_orders_path, class: "btn btn-info" %>
-                  </li>
-                  <li class = "nav-item m-2">
-                    <%= link_to "ジャンル一覧", admins_genres_path, class: "btn btn-info" %>
-                  </li>
-                  <li class = "nav-item m-2">
-                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-warning" %>
-                  </li>
-                <!-- 会員ログイン後 -->
-                <% elsif customer_signed_in? %>
-                  <li class = "nav-item ml-5 pt-2 text-danger">
-                    ようこそ、<%= current_customer.family_name %><%= current_customer.first_name %>さん！
-                  </li>
-                  <li class = "nav-item ml-5">
-                    <%= link_to "マイページ", customers_path, class: "btn btn-info" %>
-                  </li>
-                  <li class = "nav-item ml-5">
-                    <%= link_to "商品一覧", items_path, class: "btn btn-info" %>
-                  </li>
-                  <li class = "nav-item ml-5">
-                    <%= link_to "カート", cart_items_path, class: "btn btn-info" %>
-                  </li>
-                  <li class = "nav-item mr-5 ml-5">
-                    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-warning" %>
-                  </li>
-                <!-- ログイン前 -->
-                <% else %>
-                  <li class = "nav-item ml-5">
-                    <%= link_to "About", homes_about_path, class: "btn btn-info" %>
-                  </li>
-                  <li class = "nav-item ml-5">
-                    <%= link_to "商品一覧", items_path, class: "btn btn-info" %>
-                  </li>
-                  <li class = "nav-item ml-5">
-                    <%= link_to "新規登録", new_customers_registration_path, class: "btn btn-info" %>
-                  </li>
-                  <li class = "nav-item mr-5 ml-5">
-                    <%= link_to "ログイン", new_customer_session_path, class: "btn btn-warning" %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-            
-
-        </nav>
-
-      
     <%= yield %>
   </body>
 </html>
