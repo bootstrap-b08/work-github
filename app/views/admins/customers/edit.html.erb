@@ -2,8 +2,7 @@
 
 	<div class="row">
 		<div class="col mt-3">
-
-<h2><%= @full_name %>さんの会員情報編集</h2>
+	<h3><span class = "px-4 bg-light"><%= @full_name %>さんの会員詳細</span></h3>
 	<%= form_for @customer, url: admins_customer_path(@customer.id), method: :patch do |f| %>
 	<table class="table table-borderless">
 		<tbody>
