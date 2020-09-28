@@ -1,8 +1,13 @@
-<div class="container">
+<div class = "container">
 
-	<div class="row">
-		<div class="col mt-3">
-	<h3><span class = "px-4 bg-light">注文履歴一覧</span></h3>
+	<div class = "row my-5">
+		<div class = "offset-md-1">
+
+			<h3><span class = "px-4 bg-light">注文履歴一覧</span></h3>
+
+		</div>
+	</div>
+
 	<div class="col-xs=9">
 		<table class="table table-striped">
 			<thead>
@@ -16,10 +21,11 @@
 			<tbody>
 				<% @orders.each do |order| %>
 				<tr>
-					<td><%= link_to admins_order_path(order.id) do %>
-				      <%= order.created_at.strftime('%Y/%m/%d') %>
-              <% end %>
-          </td>
+					<td>
+						<%= link_to admins_order_path(order.id) do %>
+				        <%= order.created_at.strftime('%Y/%m/%d') %>
+              			<% end %>
+                    </td>
 					<td><%= order.customer.family_name %>
 						<%= order.customer.first_name %></td>
 					<td><%= order.order_items.sum(:quantity) %></td>
@@ -36,7 +42,5 @@
 		</div>
 	</div>
 
+</div>
 
-</div>
-</div>
-</div>

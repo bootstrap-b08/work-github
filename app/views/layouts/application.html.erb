@@ -12,6 +12,7 @@
   </head>
 
   <body>
+
 <% if admin_signed_in? %>
   <header style = "height:180px;border-bottom:1px solid black;background-color:purple;">
 <% else %>
@@ -81,19 +82,19 @@
         <% end %>
       </ul>
     </div>
-  </nav>
+  </div>
+
+<div class="collapse navbar-collapse flex-wrap">
+  <div class="navbar-nav ml-auto">
 
   <% if admin_signed_in? %>
-    <div class = "row w-100">
-      <div class = "col-md-12 text-right">
         <%= form_tag(admins_searches_path, method: :get) do %>
           <%= text_field_tag(:word) %>
           <%= select_tag 'range', options_for_select([['会員検索','1'],['商品検索','2']]) %>
           <%= submit_tag '検索', class: "btn btn-primary" %>
         <% end %>
-      </div>
-    </div>
   <% end %>
+
 </header><!-- /header -->
     <%= yield %>
   <footer class="container-fluid mt-4">
