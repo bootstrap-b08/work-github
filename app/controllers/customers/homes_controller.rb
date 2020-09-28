@@ -1,17 +1,17 @@
 class Customers::HomesController < ApplicationController
   def top
-      @genres = Genre.where(is_active: true)# ジャンルが有効のみ
-      # もしURLに[:genre_id]が含まれていたら
-    if params[:genre_id]
-      # その[:genre_id]のデータをGenreから@genreに格納
-      @genre = Genre.find(params[:genre_id])
-      # @genreに紐付いた商品で販売可の商品を引っ張る（作成順の昇順）
-      @items = @genre.items.order(created_at: :desc).where(is_active: true).page(params[:page]).per(8)
-      # 含まれていなければ
+    if params[:genre_id].present?
+      @items = Item.where(genre_id: params[:genre_id])
+      .page(params[:page]).per(4).reverse_order
+
+      @item_genre = @items.first.genre if @items.count > 0
     else
-      @items = Item.where(is_active: true).page(params[:page]).per(8)
-     # 販売ステータスが販売可のみの商品を参照 ジャンル作成の昇順
+      # ジャンルが無効になっている商品は一覧に表示しない
+      @items = Item
+        .joins(:genre).where(genres: {is_active: true})
+        .page(params[:page]).per(4).reverse_order
     end
+    @genres = Genre.where(is_active: true)# ジャンルが有効のみ
   end
 
   def about
