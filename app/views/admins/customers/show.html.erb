@@ -1,15 +1,22 @@
+<div class="container">
+
+	<div class="row">
+		<div class="col mt-3">
+
+
 <h2><%= @full_name %>さんの会員詳細</h2>
-	<table class="table">
+	<table class="table table-borderless">
 		<tbody>
 			<tr>
 				<th>顧客ID</th>
-				<th><%= @customer.id %></th>
-				<th>
+				<th><%= @customer.id %>
+					<div style="display:inline-block; background-color: skyblue;" class="rounded">
 					<% if @customer.is_deleted == false %>
 						有効会員
 					<% elsif @customer.is_deleted == true %>
 						退会済み
 					<% end %>
+					</div>
 				</th>
 			</tr>
 			<tr>
@@ -42,3 +49,7 @@
 	<%= link_to "編集する", edit_admins_customer_path(@customer.id), class: "btn-sm btn-success" %>
 
 	<%= link_to "注文履歴一覧を見る", admins_order_path(@customer.id), class: "btn-sm btn-success" %>
+
+		</div>
+	</div>
+</div>
