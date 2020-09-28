@@ -1,31 +1,56 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
-        <h3><span class="bg-info">会員の方はこちらからログイン</span></h3>
-         <%= form_for(resource, as: resource_name, url: customer_session_path, html:{class:"form-horizontal"}) do |f| %>
-            <%= render "customers/shared/error_messages", resource: resource %>
-            <div class="row form-group">
-              <%= f.label :email, "メールアドレス", class:"col-sm-12 col-md-2 col-md-offset-2 control-label" %>
-              <div class="col-sm-12 col-md-8"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
-              </div>
-            </div>
+<div class = "container">
 
-            <div class="row form-group">
-              <%= f.label :password, "パスワード", class:"col-sm-12 col-md-3 col-md-offset-1 control-label " %>
-              <div class="col-sm-12 col-md-8"><%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
-              </div>
-            </div>
-            <p class="text-right"><%= link_to "パスワードを忘れた方はこちら", new_customer_password_path %></p>
-            <div class="row form-group">
-              <div class="col-xs-9 col-xs-offset-4"><%= f.submit "ログイン", class:"btn btn-primary" %>
-              </div>
-            </div>
-          <% end %>
-
-        <h3>登録がお済みでない方</h3>
-        <div class="col-xs-11 col-xs-offset-1">
-          <p><%= link_to(new_customers_registration_path) do %>こちら<% end %> から新規登録を行ってください。</p>
-        </div>
+  <div class = "row mt-5">
+    <div class = "mt-5 offset-md-1">
+      <h5><span class = "px-4 bg-light">会員の方はこちらからログイン</span></h5>
     </div>
   </div>
+
+  <div class = "row mt-3">
+    <div class = "offset-md-3 col-md-8">
+      <%= form_for(resource, as: resource_name, url: customer_session_path) do |f| %>
+        <%= render "customers/shared/error_messages", resource: resource %>
+
+        <div class = "row">
+          <div class = "col-md-2">
+          <%= f.label :email, "メールアドレス", :style => 'font-size:14px;' %>
+          </div>
+          <div class = "col-md-10">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-75" %>
+          </div>
+        </div>
+
+        <div class = "row">
+          <div class = "col-md-2">
+          <%= f.label :email, "パスワード", :style => 'font-size:14px;' %>
+          </div>
+          <div class = "col-md-10">
+          <%= f.password_field :password, autocomplete: "current-password", class: "w-75" %>
+          </div>
+        </div>
+
+        <div class = "row mt-3">
+          <div class = "offset-md-6">
+            <p><%= link_to "パスワードを忘れた方はこちら", new_customer_password_path %></p>
+          </div>
+        </div>
+
+        <div class = "row">
+          <div class = "offset-md-2">
+            <%= f.submit "ログイン", class: "ml-3 px-5 btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class = "row mt-5">
+    <div class = "offset-md-1">
+      <h5><span class = "px-4 bg-light">登録がお済みでない方</span></h5>
+      <div class = "offset-md-3 col-md-12 mt-3">
+        <p><%= link_to(new_customers_registration_path) do %>こちら<% end %> から新規登録を行ってください。</p>
+      </div>
+    </div>
+  </div>
+
 </div>
