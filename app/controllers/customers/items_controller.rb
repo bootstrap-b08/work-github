@@ -5,6 +5,7 @@ class Customers::ItemsController < ApplicationController
       .page(params[:page]).per(8).reverse_order
 
       @item_genre = @items.first.genre if @items.count > 0
+      @genre = Genre.find(params[:genre_id])
     else
       # ジャンルが無効になっている商品は一覧に表示しない
       @items = Item
