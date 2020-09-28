@@ -1,57 +1,71 @@
-
-<div class="form-group">
-  <%= f.label "氏名", class: "col-xs-2 control-label" %>
-  <div class="col-xs-5">
-    <div class="row">
-      <div class="col-xs-6">
-        <%= f.text_field :family_name, class:"form-control", placeholder: "例)山田" %>
-      </div>
-      <div class="col-xs-6">
-        <%= f.text_field :first_name, class:"form-control", placeholder: "例)花子" %>
-      </div>
-    </div>
+<div class = "row mb-2">
+  <div class = "col-md-3">
+    <%= f.label "名前" %>
+  </div>
+  <div class = "col-md-1">
+    <%= f.label "（姓）", :style => 'font-size:10px;' %>
+  </div>
+  <div class = "col-md-4">
+    <%= f.text_field :family_name, placeholder: "例)山田", class: "w-100" %>
+  </div>
+  <div class = "col-md-1">
+    <%= f.label "（名）", :style => 'font-size:10px;' %>
+  </div>
+  <div class = "col-md-3">
+    <%= f.text_field :first_name, placeholder: "例)花子", class: "w-100" %>
   </div>
 </div>
 
-<div class="form-group">
-  <%= f.label "フリガナ", class: "col-xs-2 control-label" %>
-  <div class="col-xs-5">
-    <div class="row">
-      <div class="col-xs-6">
-        <%= f.text_field :family_name_kana, class:"form-control", placeholder: "例)ヤマダ" %>
-      </div>
-      <div class="col-xs-6">
-        <%= f.text_field :first_name_kana, class:"form-control", placeholder: "例)ハナコ" %>
-      </div>
-    </div>
+<div class = "row mb-2">
+  <div class = "col-md-3">
+    <%= f.label "フリガナ" %>
+  </div>
+  <div class = "col-md-1">
+    <%= f.label "（セイ）", :style => 'font-size:10px;' %>
+  </div>
+  <div class = "col-md-4">
+    <%= f.text_field :family_name, placeholder: "例)ヤマダ", class: "w-100" %>
+  </div>
+  <div class = "col-md-1">
+    <%= f.label "（メイ）", :style => 'font-size:10px;' %>
+  </div>
+  <div class = "col-md-3">
+    <%= f.text_field :first_name, placeholder: "例)ハナコ", class: "w-100" %>
   </div>
 </div>
 
-<div class="form-group">
-  <%= f.label "郵便番号", class: "col-xs-2 control-label" %>
-  <div class="col-xs-3">
-    <%= f.text_field :postel_code, class:"form-control", placeholder: "例)0000000" %>
+<div class = "row mb-2">
+  <div class = "col-md-4">
+    <%= f.label "メールアドレス" %>
+  </div>
+  <div class = "col-md-4">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例)nagano@example.co.jp", class: "w-100" %>
   </div>
 </div>
 
-<div class="form-group">
-  <%= f.label "住所", class: "col-xs-2 control-label" %>
-  <div class="col-xs-5">
-    <%= f.text_field :address, class:"form-control", placeholder: "例)
-    東京都六本木一丁目コーポ山下603" %>
+<div class = "row mb-2">
+  <div class = "col-md-4">
+    <%= f.label "郵便番号（ハイフンなし）" %>
+  </div>
+  <div class = "col-md-4">
+    <%= f.text_field :postel_code, placeholder: "例)0000000", class: "w-100" %>
   </div>
 </div>
 
-<div class="form-group">
-  <%= f.label "電話番号", class: "col-xs-2 control-label" %>
-  <div class="col-xs-3">
-    <%= f.text_field :telephone_number, class:"form-control", placeholder: "例)0000000000" %>
+<div class = "row mb-2">
+  <div class = "col-md-4">
+    <%= f.label "住所" %>
+  </div>
+  <div class = "col-md-8">
+    <%= f.text_field :address, placeholder: "例)東京都六本木一丁目コーポ山下603", class: "w-100" %>
   </div>
 </div>
 
-<div class="form-group">
-  <%= f.label "メールアドレス", class: "col-xs-2 control-label" %>
-  <div class="col-xs-3">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: "例)nagano@example.co.jp" %>
+<div class = "row mb-2">
+  <div class = "col-md-4">
+    <%= f.label "電話番号（ハイフンなし）" %>
+  </div>
+  <div class = "col-md-4">
+    <%= f.text_field :telephone_number, placeholder: "例)0000000000", class: "w-100" %>
   </div>
 </div>
