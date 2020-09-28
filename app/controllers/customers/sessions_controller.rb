@@ -29,7 +29,7 @@ class Customers::SessionsController < Devise::SessionsController
       if resource.is_deleted == true
          sign_out resource
 
-         render "customers/sign_in"
+         new_customer_session_path
       else
          root_path
       end
