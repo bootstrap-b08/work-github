@@ -11,35 +11,50 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   </head>
 
-  <body>
-    <header>
-      <div class = "container-fluid">
-        <div class = "row pt-5">
+  <body
 
-          <div class = "col-md-3 pt-2">
-            <%= link_to root_path do %>
+<nav class="navbar navbar-expand-md navbar-light p-5" style="background-color: green;">
+  <a class="navbar-brand" href="/"><%= link_to root_path do %>
               <%= image_tag 'logo4_img.png', size: '300x100' %>
-            <% end %>
-          </div>
+            <% end %></a>
 
-          <div class = "col-md-9 pt-5 clearfix">
-            <nav class = "float-right">
-              <ul class = "nav">
+          <% if admin_signed_in? %>
+            <div class = "row w-100 mr-5">
+              <div class = "col-md-12 text-right">
+                <%= form_tag(admins_searches_path, method: :get) do %>
+                  <%= text_field_tag(:word) %>
+                  <%= select_tag 'range', options_for_select([['会員検索','1'],['商品検索','2']]) %>
+                  <%= submit_tag '検索', class: "btn btn-primary" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+            <% end %>
+          
+
+  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#bs-navi" aria-controls="bs-navi" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+    <div class="collapse navbar-collapse" id="bs-navi">
+    <ul class="navbar-nav ml-auto">
+
+
                 <!-- 管理者ログイン後 -->
                 <% if admin_signed_in? %>
-                  <li class = "nav-item ml-5">
+                  <li class = "nav-item m-2">
                     <%= link_to "商品一覧", admins_items_path, class: "btn btn-info" %>
                   </li>
-                  <li class = "nav-item ml-5">
+                  <li class = "nav-item m-2">
                     <%= link_to "会員一覧", admins_customers_path, class: "btn btn-info" %>
                   </li>
-                  <li class = "nav-item ml-5">
+                  <li class = "nav-item m-2">
                     <%= link_to "注文履歴一覧", admins_orders_path, class: "btn btn-info" %>
                   </li>
-                  <li class = "nav-item ml-5">
+                  <li class = "nav-item m-2">
                     <%= link_to "ジャンル一覧", admins_genres_path, class: "btn btn-info" %>
                   </li>
-                  <li class = "nav-item mr-5 ml-5">
+                  <li class = "nav-item m-2">
                     <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-warning" %>
                   </li>
                 <!-- 会員ログイン後 -->
@@ -75,25 +90,12 @@
                   </li>
                 <% end %>
               </ul>
-            </nav>
-          </div>
-
-          <% if admin_signed_in? %>
-            <div class = "row w-100 mr-5">
-              <div class = "col-md-12 text-right">
-                <%= form_tag(admins_searches_path, method: :get) do %>
-                  <%= text_field_tag(:word) %>
-                  <%= select_tag 'range', options_for_select([['会員検索','1'],['商品検索','2']]) %>
-                  <%= submit_tag '検索', class: "btn btn-primary" %>
-                <% end %>
-              </div>
             </div>
-          <% end %>
+            
 
-        </div>
+        </nav>
 
-      </div>
-    </header><!-- /header -->
+      
     <%= yield %>
   </body>
 </html>
