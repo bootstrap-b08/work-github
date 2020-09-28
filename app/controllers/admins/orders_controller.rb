@@ -3,7 +3,8 @@ class Admins::OrdersController < ApplicationController
 	before_action :set_order, except: [:index]
 
 	def index
-		@orders = Order.page(params[:page]).per(10)
+		@customer = Customer.find(params[:id])
+		@orders = @customer.orders.page(params[:page]).per(10)
 	end
 
 	def show
