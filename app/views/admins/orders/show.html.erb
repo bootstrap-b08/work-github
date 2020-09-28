@@ -8,7 +8,10 @@
 		</div>
 	</div>
 
+	<div class = "row">
+
 	<table class="table table-borderless">
+
 		<tbody>
 			<tr>
 				<th>購入者</th>
@@ -39,8 +42,13 @@
 			</tr>
 		</tbody>
 	</table>
+	</div>
 
-	<table class="table table-striped" style="border:1;" align="left">
+	<div class = "row">
+		<div class = "col-md-8">
+			
+	<table class="table table-striped">
+
 		<thead>
 			<tr>
 				<th>商品名</th>
@@ -69,22 +77,38 @@
 			<% end %>
 		</tbody>
 	</table>
-
-	<table border="1">
-		<tbody>
-			<tr>
-				<th>商品合計</th>
-				<td><%= sum_all %>円</td>
-			</tr>
-			<tr>
-				<th>送料</th>
-				<td><%= @order.shipping_cost %>円</td>
-			</tr>
-			<tr>
-				<th>請求金額合計</th>
-				<td><%= sum_all + @order.shipping_cost.to_i %>円</td>
-			</tr>
-		</tbody>
-	</table>
+		</div>
+		<div class = "col-md-1">
+			
+		</div>
+		<div class = "col-md-3">
+			<div class = "row">
+				<div class = "col-md-6">
+				<p class = "font-weight-bold">商品合計</p>
+				</div>
+				<div class = "col-md-6">
+				<p class = "text-right"><%= sum_all %>円</p>
+				</div>
+			</div>
+			<div class = "row">
+				<div class = "col-md-6">
+				<p class = "font-weight-bold">送料</p>
+				</div>
+				<div class = "col-md-6">
+				<p class = "text-right"><%= @order.shipping_cost %>円</p>
+				</div>
+			</div>
+			<div class = "row">
+				<div class = "col-md-6">
+				<p class = "font-weight-bold">請求金額合計</p>
+				</div>
+				<div class = "col-md-6">
+				<p class = "text-right font-weight-bold"><%= sum_all + @order.shipping_cost.to_i %>円</p>
+				</div>
+			</div>
+			
+		</div>
+	
+	</div>
 
 </div>
