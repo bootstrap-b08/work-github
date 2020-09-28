@@ -1,6 +1,5 @@
 <%= render "layouts/genre_search", genres: @genres %>
 
-<!-- 画像 -->
 <%= attachment_image_tag @item, :image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg",
         class: "offset-md-2" %>
 <h2><%= @item.name %></h2>
