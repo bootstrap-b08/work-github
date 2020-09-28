@@ -1,36 +1,42 @@
+<div class="container">
+
+	<div class="row">
+		<div class="col mt-3">
+
 <h2><%= @full_name %>さんの会員情報編集</h2>
 	<%= form_for @customer, url: admins_customer_path(@customer.id), method: :patch do |f| %>
-	<table class="table">
+	<table class="table table-borderless">
 		<tbody>
 			<tr>
 				<th>顧客ID</th>
 				<th><%= @customer.id %></th>
+
 			</tr>
 			<tr>
 				<th>氏名</th>
-				<th><%= f.text_field :family_name %></th>
-				<th><%= f.text_field :first_name %></th>
+				<th><%= f.text_field :family_name, class: "rounded" %></th>
+				<th><%= f.text_field :first_name, class: "rounded" %></th>
 			</tr>
 			<tr>
 				<th>フリガナ</th>
-				<th><%= f.text_field :family_name_kana %></th>
-				<th><%= f.text_field :first_name_kana %></th>
+				<th><%= f.text_field :family_name_kana, class: "rounded" %></th>
+				<th><%= f.text_field :first_name_kana, class: "rounded" %></th>
 			</tr>
 			<tr>
 				<th>郵便番号</th>
-				<th><%= f.text_field :postel_code %></th>
+				<th><%= f.text_field :postel_code, class: "rounded" %></th>
 			</tr>
 			<tr>
 				<th>住所</th>
-				<th><%= f.text_field :address %></th>
+				<th><%= f.text_field :address, class: "rounded" %></th>
 			</tr>
 			<tr>
 				<th>電話番号</th>
-				<th><%= f.text_field :telephone_number %></th>
+				<th><%= f.text_field :telephone_number, class: "rounded" %></th>
 			</tr>
 			<tr>
 				<th>メールアドレス</th>
-				<th><%= f.text_field :email %></th>
+				<th><%= f.text_field :email, class: "rounded" %></th>
 			</tr>
 			<tr>
 				<th><%= f.label :name, '会員ステータス' %></th>
@@ -45,3 +51,7 @@
 		</tbody>
 	</table>
 	<% end %>
+
+</div>
+</div>
+</div>
