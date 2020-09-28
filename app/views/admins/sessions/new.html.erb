@@ -1,40 +1,40 @@
-<div class="container">
+<div class = "container">
 
-  <div class="row">
-    <div class="col-md-6 col-xl-3 mt-3">
-
-<h2>管理者ログイン</h2>
-
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <div class = "row mt-5 mb-3">
+    <div class = "offset-md-1">
+      <h3><span class = "px-4 bg-light">管理者ログイン</span></h3>
     </div>
-  <% end %>
-
-  <div class="actions">
-
-    <%= f.submit "Log in" %>
-
   </div>
 
-  <% end %>
+  <div class = "row mt-3">
+    <div class = "offset-md-3 col-md-8">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
+        <div class = "row mb-3">
+          <div class = "col-md-2">
+            <%= f.label :メールアドレス, :style => 'font-size:13px;' %>
+          </div>
+          <div class = "col-md-10">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-50" %>
+          </div>
+        </div>
 
-<%= render "admins/shared/links" %>
+        <div class = "row mb-5">
+          <div class = "col-md-2">
+            <%= f.label :パスワード, :style => 'font-size:13px;' %>
+          </div>
+          <div class = "col-md-10">
+            <%= f.password_field :password, autocomplete: "current-password", class: "w-50" %>
+          </div>
+        </div>
 
+        <div class = "row">
+          <div class = "offset-md-2">
+            <%= f.submit "ログイン", class: "ml-3 px-5 btn btn-primary rounded-pill" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
+
 </div>
