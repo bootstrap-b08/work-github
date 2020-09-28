@@ -3,12 +3,10 @@
 	<div class = "row my-5">
 		<div class = "offset-md-1">
 
-			<h3><span class = "px-4 bg-light">管理者画面</span></h3>
+			<h3><span class = "px-4 bg-light"><%= @full_name %>さんの会員詳細></span></h3>
 
 		</div>
 	</div>
-
-			<h5><%= @full_name %>さんの会員詳細</h5>
 
 	<table class="table table-borderless">
 		<tbody>
@@ -53,6 +51,6 @@
 
 	<%= link_to "編集する", edit_admins_customer_path(@customer.id), class: "btn-sm btn-success" %>
 
-	<%= link_to "注文履歴一覧を見る", admins_order_path(@customer.id), class: "btn-sm btn-success" %>
+	<%= link_to "注文履歴一覧を見る", admins_orders_path, class: "btn-sm btn-success" %>
 
 </div>
