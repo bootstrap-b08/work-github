@@ -5,12 +5,13 @@
 
 <h3><span class = "px-4 bg-light">管理者画面</span></h3>
 
-		<p class="mt-5">本日の注文件数</p>
+		<h4 class="mt-5">本日の注文件数　　　
 
-      	<p><%= link_to admins_today_orders_path do %>
+      	<%= link_to admins_today_orders_path do %>
         <%= Order.where(created_at:  Time.zone.now.all_day).count %>
         <% end %>件
-    	</p>
+
+    	</h4>
 
     	</div>
     </div>

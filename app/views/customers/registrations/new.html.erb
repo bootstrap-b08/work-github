@@ -14,7 +14,7 @@
 
         <div class = "row mb-2">
           <div class = "col-md-4">
-            <%= f.label "パスワード" %>
+            <%= f.label "パスワード（6文字以上）" %>
           </div>
           <div class = "col-md-4">
             <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード（6文字以上）", class: "w-100" %>
@@ -23,7 +23,7 @@
 
         <div class="row mb-2">
           <div class = "col-md-4">
-            <%= f.label "パスワード（確認）" %>
+            <%= f.label "パスワード（確認用）" %>
           </div>
           <div class = "col-md-4">
             <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:  "パスワードの確認", class: "w-100" %>
