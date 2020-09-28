@@ -12,8 +12,12 @@
   </head>
 
   <body>
-
-    <nav class="navbar navbar-expand-md navbar-light p-5" style = "background-color:purple;" >
+<% if admin_signed_in? %>
+  <header style = "height:180px;border-bottom:1px solid black;background-color:purple;">
+<% else %>
+  <header style = "height:140px;border-bottom:1px solid black;background-color:purple;">
+<% end %>
+  <nav class="navbar navbar-expand-md navbar-light pt-4 mb-n3" >
     <a class="navbar-brand" href="/">
       <%= link_to root_path do %>
         <%= image_tag 'logo4_img.png', size: '300x100' %>
@@ -45,7 +49,7 @@
           </li>
         <!-- 会員ログイン後 -->
         <% elsif customer_signed_in? %>
-          <li class = "nav-item ml-5 pt-2 text-danger">
+          <li class = "nav-item ml-5 pt-2 text-light">
             ようこそ、<%= current_customer.family_name %><%= current_customer.first_name %>さん！
           </li>
           <li class = "nav-item ml-5">
@@ -90,6 +94,7 @@
       </div>
     </div>
   <% end %>
+</header><!-- /header -->
     <%= yield %>
   <footer class="container-fluid mt-4">
     <div class=" container mw-100 " style="height: 50px;"></div>
