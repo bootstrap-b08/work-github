@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     patch '/orders/:id/product_status' => 'orders#product_status_update', as: "product_status" # 製作ステータスupdate
     get '/today/orders' => 'orders#index', as: "today_orders" # TOP,本日受注した注文数 => 注文履歴の表示データ用
     get '/searches' => 'searches#search'
+    get '/:id/orders' => 'orders#index', as: "orders_customer"
   end
 
   #customer
