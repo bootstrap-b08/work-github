@@ -1,9 +1,10 @@
-<div class="container">
-  <div class="row">
-    <div class=" ">
-      <p id="notice"><%= notice %></p>
-      <h2>マイページ</h2>
-        <div class="row　align-text-bottom pb-2">
+<div class="container-fluid">
+
+    <div class = "row mt-5">
+      <div class = "offset-md-2">
+        <h3><span class = "px-4 bg-light">マイページ</span></h3>
+
+        <div class="row　align-text-bottom pb-2 mt-5">
           <strong>登録情報</strong>
           <%= link_to '編集する',edit_customers_path, class: "btn btn-primary btn-sm px-1"  %>
           <%= link_to 'パスワードを変更する', edit_customer_registration_path, class: "btn btn-primary btn-sm" %>
