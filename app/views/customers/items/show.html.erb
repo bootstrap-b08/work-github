@@ -11,13 +11,13 @@
 					</div>
 					<div class="col-md-6">
 						<h4><%= @item.name %></h4>
-						<p><%= @item.introduction %></p>
+						<p class="text-wrap" style="width: 18rem;"><%= @item.introduction %></p>
 						<h4>￥<%= (@item.price * Constants::TAX).round %>(税込)</h4>
 					 		<%= form_for @cart_item do |f| %>
 							<%= f.number_field :quantity, min:1, placeholder: "個数選択" %>
 							<%= f.hidden_field :item_id, :value => @item.id %>
 							<%= f.submit "カートに入れる", class: "btn btn-primary btn-sm" %>
-							<% end %>
+						<% end %>
 				  </div>
 				</div>
 			</div>
