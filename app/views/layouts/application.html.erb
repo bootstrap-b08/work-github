@@ -12,8 +12,9 @@
   </head>
 
   <body>
+    <header>
 
-    <nav class="navbar navbar-expand-md navbar-light p-5" style = "background-color:purple;" >
+    <nav class="navbar navbar-expand-md navbar-light p-3" style = "background-color:purple;" >
     <a class="navbar-brand" href="/">
       <%= link_to root_path do %>
         <%= image_tag 'logo4_img.png', size: '300x100' %>
@@ -77,21 +78,25 @@
         <% end %>
       </ul>
     </div>
-  </nav>
+  </div>
+
+<div class="collapse navbar-collapse flex-wrap">
+  <div class="navbar-nav ml-auto">
 
   <% if admin_signed_in? %>
-    <div class = "row w-100">
-      <div class = "col-md-12 text-right">
         <%= form_tag(admins_searches_path, method: :get) do %>
           <%= text_field_tag(:word) %>
           <%= select_tag 'range', options_for_select([['会員検索','1'],['商品検索','2']]) %>
           <%= submit_tag '検索', class: "btn btn-primary" %>
         <% end %>
-      </div>
-    </div>
   <% end %>
+</div>
+</div>
+</nav>
+</header>
 
     <%= yield %>
+
   <footer>
     <div class=" container mw-100 h-100 bg-success " style="height: 50px">
         <div class="row justify-content-center py-2">

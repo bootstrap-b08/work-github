@@ -1,57 +1,60 @@
-<div class="container">
+<div class = "container">
 
-	<div class="row">
-		<div class="col mt-3">
+	<div class = "row my-5">
+		<div class = "offset-md-1">
 
-<h2><%= @full_name %>さんの会員情報編集</h2>
+<h3><span class = "px-4 bg-light"><%= @full_name %>さんの会員情報編集</span></h3>
+
+		</div>
+	</div>
+
 	<%= form_for @customer, url: admins_customer_path(@customer.id), method: :patch do |f| %>
+	<div class="row">
 	<table class="table table-borderless">
 		<tbody>
 			<tr>
-				<th>顧客ID</th>
-				<th><%= @customer.id %></th>
-
+				<th scope="col">顧客ID</th>
+				<td><%= @customer.id %></td>
 			</tr>
 			<tr>
-				<th>氏名</th>
-				<th><%= f.text_field :family_name, class: "rounded" %></th>
-				<th><%= f.text_field :first_name, class: "rounded" %></th>
+				<th scope="col">氏名</th>
+				<td><%= f.text_field :family_name, class: "rounded" %></td>
+				<td><%= f.text_field :first_name, class: "rounded" %></td>
 			</tr>
 			<tr>
-				<th>フリガナ</th>
-				<th><%= f.text_field :family_name_kana, class: "rounded" %></th>
-				<th><%= f.text_field :first_name_kana, class: "rounded" %></th>
+				<th scope="col">フリガナ</th>
+				<td><%= f.text_field :family_name_kana, class: "rounded" %></td>
+				<td><%= f.text_field :first_name_kana, class: "rounded" %></td>
 			</tr>
 			<tr>
-				<th>郵便番号</th>
-				<th><%= f.text_field :postel_code, class: "rounded" %></th>
+				<th scope="col">郵便番号</th>
+				<td><%= f.text_field :postel_code, class: "rounded" %></td>
 			</tr>
 			<tr>
-				<th>住所</th>
-				<th><%= f.text_field :address, class: "rounded" %></th>
+				<th scope="col">住所</th>
+				<td><%= f.text_field :address, class: "rounded" %></td>
 			</tr>
 			<tr>
-				<th>電話番号</th>
-				<th><%= f.text_field :telephone_number, class: "rounded" %></th>
+				<th scope="col">電話番号</th>
+				<td><%= f.text_field :telephone_number, class: "rounded" %></td>
 			</tr>
 			<tr>
-				<th>メールアドレス</th>
-				<th><%= f.text_field :email, class: "rounded" %></th>
+				<th scope="col">メールアドレス</th>
+				<td><%= f.text_field :email, class: "rounded" %></td>
 			</tr>
 			<tr>
-				<th><%= f.label :name, '会員ステータス' %></th>
-				<th><%= f.radio_button :is_deleted, :false %>
+				<th scope="col"><%= f.label :name, '会員ステータス' %></th>
+				<td><%= f.radio_button :is_deleted, :false %>
 				  	<%= f.label :is_deleted, "有効", value: :false %>
 				  	<%= f.radio_button :is_deleted, :true %>
-				  	<%= f.label :is_deleted, "退会済み", value: :true %></th>
+				  	<%= f.label :is_deleted, "退会済み", value: :true %></td>
 			</tr>
 			<tr>
 				<th><%= f.submit "変更を保存する", class: "btn btn-danger" %></th>
 			</tr>
 		</tbody>
 	</table>
+	</div>
 	<% end %>
 
-</div>
-</div>
 </div>

@@ -1,15 +1,20 @@
-<div class="container">
+<div class = "container">
 
-	<div class="row">
-		<div class="col mt-3">
+	<div class = "row my-5">
+		<div class = "offset-md-1">
 
+			<h3><span class = "px-4 bg-light">管理者画面</span></h3>
 
-<h2><%= @full_name %>さんの会員詳細</h2>
+		</div>
+	</div>
+
+			<h5><%= @full_name %>さんの会員詳細</h5>
+
 	<table class="table table-borderless">
 		<tbody>
 			<tr>
 				<th>顧客ID</th>
-				<th><%= @customer.id %>
+				<td><%= @customer.id %>
 					<div style="display:inline-block; background-color: skyblue;" class="rounded">
 					<% if @customer.is_deleted == false %>
 						有効会員
@@ -17,31 +22,31 @@
 						退会済み
 					<% end %>
 					</div>
-				</th>
+				</td>
 			</tr>
 			<tr>
 				<th>氏名</th>
-				<th><%= @full_name %></th>
+				<td><%= @full_name %></td>
 			</tr>
 			<tr>
 				<th>フリガナ</th>
-				<th><%= @full_name_kana %></th>
+				<td><%= @full_name_kana %></td>
 			</tr>
 			<tr>
 				<th>郵便番号</th>
-				<th><%= @customer.postel_code %></th>
+				<td><%= @customer.postel_code %></td>
 			</tr>
 			<tr>
 				<th>住所</th>
-				<th><%= @customer.address %></th>
+				<td><%= @customer.address %></td>
 			</tr>
 			<tr>
 				<th>電話番号</th>
-				<th><%= @customer.telephone_number %></th>
+				<td><%= @customer.telephone_number %></td>
 			</tr>
 			<tr>
 				<th>メールアドレス</th>
-				<th><%= @customer.email %></th>
+				<td><%= @customer.email %></td>
 			</tr>
 		</tbody>
 	</table>
@@ -50,6 +55,4 @@
 
 	<%= link_to "注文履歴一覧を見る", admins_order_path(@customer.id), class: "btn-sm btn-success" %>
 
-		</div>
-	</div>
 </div>

@@ -1,28 +1,32 @@
-<div class="container">
+<div class = "container">
 
-	<div class="row">
-		<div class="col mt-3">
+	<div class = "row my-5">
+		<div class = "offset-md-1">
+
+			<h3><span class = "px-4 bg-light">注文履歴詳細</span></h3>
+
+		</div>
+	</div>
 
 
-
-<h2>注文履歴詳細</h2>
 	<table class="table">
 		<tbody>
 			<tr>
 				<th>購入者</th>
-				<th><%= link_to admins_customer_path(@order.customer.id) do %>
+				<td>
+					<%= link_to admins_customer_path(@order.customer.id) do %>
 					<%= @order.customer.family_name %>
 					<%= @order.customer.first_name %>
 					<% end %>
-				</th>
+				</td>
 			</tr>
 			<tr>
 				<th>配送先</th>
-				<th><%= @order.shipping_address %></th>
+				<td><%= @order.shipping_address %></td>
 			</tr>
 			<tr>
 				<th>支払方法</th>
-				<th><%= @order.payment_method %></th>
+				<td><%= @order.payment_method %></td>
 			</tr>
 			<tr>
 				<th>注文ステータス</th>
@@ -70,20 +74,17 @@
 		<tbody>
 			<tr>
 				<th>商品合計</th>
-				<th><%= sum_all %>円</th>
+				<td><%= sum_all %>円</td>
 			</tr>
 			<tr>
 				<th>送料</th>
-				<th><%= @order.shipping_cost %>円</th>
+				<td><%= @order.shipping_cost %>円</td>
 			</tr>
 			<tr>
 				<th>請求金額合計</th>
-				<th><%= sum_all + @order.shipping_cost.to_i %>円</th>
+				<td><%= sum_all + @order.shipping_cost.to_i %>円</td>
 			</tr>
 		</tbody>
 	</table>
 
-
-</div>
-</div>
 </div>
