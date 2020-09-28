@@ -3,7 +3,7 @@
     <div class=" ">
       <p id="notice"><%= notice %></p>
       <h2>マイページ</h2>
-        <div class="row　align-text-bottom">
+        <div class="row　align-text-bottom pb-2">
           <strong>登録情報</strong>
           <%= link_to '編集する',edit_customers_path, class: "btn btn-primary btn-sm px-1"  %>
           <%= link_to 'パスワードを変更する', edit_customer_registration_path, class: "btn btn-primary btn-sm" %>
@@ -34,14 +34,19 @@
           <td><%= @customer.email %></td>
         </tr>
       </table>
-
-      <div class="">
-        <strong>配送先 </strong>
-        <%= link_to '一覧を見る', addresses_path, class: "btn btn-primary btn-sm" %>
+      <div class="row pb-2">
+        <strong class="col-4">配送先 </strong>
+        <div class="col-6">
+          <%= link_to '一覧を見る', addresses_path, class: "btn btn-primary btn-sm w-100" %>
+        </div>
       </div>
-      <div class="">
-        <strong>注文履歴</strong>
-        <%= link_to '一覧を見る', orders_path, class: "btn btn-primary btn-sm" %>
+      <div class="row pb-2">
+        <strong class="col-4">注文履歴</strong>
+        <div class="col-6 ">
+          <%= link_to '一覧を見る', orders_path, class: "btn btn-primary btn-sm w-100" %>
+        </div>
+      </div>
+
       </div>
     </div>
   </div>
