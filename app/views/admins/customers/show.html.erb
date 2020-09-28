@@ -24,11 +24,11 @@
 			</tr>
 			<tr>
 				<th>氏名</th>
-				<td><%= @full_name %></td>
+				<td><%= @customer.family_name + "　" + @customer.first_name %></td>
 			</tr>
 			<tr>
 				<th>フリガナ</th>
-				<td><%= @full_name_kana %></td>
+				<td><%= @customer.family_name_kana + "　" + @customer.first_name_kana  %></td>
 			</tr>
 			<tr>
 				<th>郵便番号</th>

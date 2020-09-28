@@ -1,7 +1,7 @@
 <div class="container my-5">
   <div class="row">
     <div class="offset-1">
-      <h2 class="red-border px-3 pb-1">配送先を編集する</h2>
+      <h2 class="red-border px-3 pb-1">配送先編集</h2>
     </div>
   </div>
 
@@ -9,7 +9,7 @@
   <div class="offset-4 col-4">
   <%= form_for(@address) do |f| %>
     <div class="form-group">
-      <%= f.label :"郵便番号", class: "brown-border px-3 pb-1" %>
+      <%= f.label :"郵便番号（ハイフンなし）", class: "brown-border px-3 pb-1" %>
       <%= f.text_field :post_code, class: "form-control offset-1 col-10" %>
     </div>
 
